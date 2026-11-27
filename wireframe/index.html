@@ -18,6 +18,14 @@ a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
 .tag{position:absolute;top:10px;left:14px;font:600 10px system-ui;letter-spacing:.08em;color:#666;text-transform:uppercase}
 .sec{position:relative;padding:60px 64px 56px;border-bottom:1px dashed #aaa}
 .card{border:1px solid #aaa;padding:16px;display:flex;flex-direction:column;gap:10px;background:#fafafa}
+
+/* EDIT HERE: hero background photo. Upload your image to public/assets/hero.jpg (GitHub: Add file > Upload files) and it appears automatically. */
+:root{--hero-image:url('/assets/hero.jpg')}
+.hero{position:relative;min-height:620px;padding:84px 64px 150px;box-sizing:border-box;color:#fff;border-bottom:1px dashed #aaa;background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.35) 60%,rgba(0,0,0,.15) 100%),var(--hero-image),linear-gradient(135deg,#6a6a6a,#222);background-size:cover;background-position:center}
+.hero .tag{color:#ddd}
+.hero .t{background:rgba(255,255,255,.85);border-radius:2px}
+.chip{border:1.5px solid #bbb;padding:10px 14px;font:600 12px system-ui;color:#222;background:#fff;text-align:center;min-width:76px}
+.chip.on{background:#333;color:#fff;border-color:#333}
 </style>
 <div style="width:100%;max-width:1280px;margin:0 auto;background:#fff">
 <div style="display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:72px;border-bottom:1px solid #888">
@@ -26,16 +34,21 @@ a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
 <a href="contact.html" class="btn f">WhatsApp / Send an enquiry</a>
 </div>
 
-<div class="sec" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;align-items:center">
-<div class="tag">1 · Hero</div>
-<div style="display:flex;flex-direction:column;gap:16px">
-<div class="bar" style="width:140px"></div>
-<div class="h" style="width:95%;height:36px"></div><div class="h" style="width:70%;height:36px"></div>
-<div class="bar" style="width:90%"></div><div class="bar" style="width:85%"></div><div class="bar" style="width:60%"></div>
-<div style="display:flex;gap:12px;margin-top:8px"><a href="contact.html" class="btn f">Primary button: Send an enquiry</a><a href="treatments.html" class="btn">Secondary: View treatments</a></div>
-<div style="display:flex;gap:24px;margin-top:12px"><div style="display:flex;gap:8px;align-items:center"><div class="img" style="width:28px;height:28px;border-radius:14px"></div><div class="bar" style="width:80px"></div></div><div style="display:flex;gap:8px;align-items:center"><div class="img" style="width:28px;height:28px;border-radius:14px"></div><div class="bar" style="width:80px"></div></div><div style="display:flex;gap:8px;align-items:center"><div class="img" style="width:28px;height:28px;border-radius:14px"></div><div class="bar" style="width:80px"></div></div></div>
+<div class="hero">
+<div class="tag">1 · Hero (full-width background photo, text on the left)</div>
+<div class="img" style="position:absolute;top:28px;right:40px;width:84px;height:84px;border-radius:42px;background:rgba(255,255,255,.2);border-color:#ddd;color:#fff"><span style="background:transparent">BADGE</span></div>
+<div style="max-width:520px;display:flex;flex-direction:column;gap:18px">
+<div style="font:600 11px system-ui;letter-spacing:.14em;text-transform:uppercase;color:#eee">Eyebrow: international patient services</div>
+<div style="font:700 56px/1.08 system-ui">Headline goes here, two or three lines</div>
+<div style="font:400 15px/1.6 system-ui;color:#eee">Short supporting paragraph: what you treat, who it is for, and what makes you different. Three or four lines.</div>
+<div style="display:flex;gap:14px;align-items:center;margin-top:6px"><a href="contact.html" class="btn f" style="background:#fff;color:#222;border-color:#fff">Primary button</a><a href="treatments.html" class="btn" style="color:#fff;border-color:#fff">Secondary button</a></div>
+<div style="display:flex;gap:28px;font:600 12px system-ui;color:#eee;margin-top:10px"><div>10,000+ patients</div><div>40+ countries</div><div>15+ years</div></div>
 </div>
-<div class="img" style="height:420px"><span>HERO IMAGE · hospital / care team photo</span></div>
+<div style="position:absolute;left:64px;right:auto;bottom:36px;display:flex;background:#fff;border:1px solid #aaa;color:#222;max-width:1000px">
+<div style="background:#333;color:#fff;padding:18px 22px;min-width:170px;display:flex;flex-direction:column;gap:6px;font:700 14px system-ui">Plan your treatment<span style="font:400 11px system-ui;color:#ddd">Step 1 of 3</span></div>
+<div style="padding:14px 18px;display:flex;flex-direction:column;gap:8px"><div style="font:600 9px system-ui;letter-spacing:.12em;color:#555">WHICH TREATMENT</div><div style="display:flex;gap:8px"><div class="chip on">Treatment 1</div><div class="chip">Treatment 2</div><div class="chip">Treatment 3</div><div class="chip">Treatment 4</div><div class="chip">Not sure</div></div></div>
+<a href="contact.html" class="btn f" style="align-self:center;margin:0 18px">Begin my plan →</a>
+</div>
 </div>
 
 <div class="sec" style="padding-top:48px;padding-bottom:40px">

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Treatment detail wireframe</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;color:#222;background:#fff}
+a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
+.img{background:linear-gradient(to top right,transparent calc(50% - 1px),#b0b0b0 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#b0b0b0 50%,transparent calc(50% + 1px)),#ececec;border:1px solid #b0b0b0;display:flex;align-items:center;justify-content:center;color:#444;font:600 12px/1.2 system-ui;text-align:center;box-sizing:border-box}
+.img span{background:#ececec;padding:2px 8px}
+.bar{height:10px;background:#d2d2d2;border-radius:2px}
+.h{height:22px;background:#8f8f8f;border-radius:2px}
+.btn{border:1.5px solid #444;padding:13px 22px;font:600 13px system-ui;color:#222;display:inline-block;text-align:center}
+.btn.f{background:#444;color:#fff}
+.tag{position:absolute;top:10px;left:14px;font:600 10px system-ui;letter-spacing:.08em;color:#666;text-transform:uppercase}
+.sec{position:relative;padding:60px 64px 56px;border-bottom:1px dashed #aaa}
+.card{border:1px solid #aaa;padding:16px;display:flex;flex-direction:column;gap:10px;background:#fafafa}
+</style>
+</helmet>
+<div style="width:100%;max-width:1280px;margin:0 auto;background:#fff">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:72px;border-bottom:1px solid #888">
+<a href="Main.dc.html" class="img" style="width:150px;height:40px"><span>LOGO</span></a>
+<nav style="display:flex;gap:28px;font:500 14px system-ui"><a href="Treatments.dc.html">Treatments</a><a href="Doctors.dc.html">Doctors</a><a href="PlanYourVisit.dc.html">Plan your visit</a><a href="FAQ.dc.html">FAQ</a><a href="Contact.dc.html">Contact</a></nav>
+<a href="Contact.dc.html" class="btn f">WhatsApp / Send an enquiry</a>
+</div><div class="sec" style="padding-bottom:40px;background:#f4f4f4"><div class="tag">1 · Treatment title + short line</div>
+<div style="display:flex;flex-direction:column;gap:14px"><div style="font:500 12px system-ui;color:#555">Breadcrumb: Home / Treatments / Treatment name</div><div class="h" style="width:45%;height:34px"></div><div class="bar" style="width:60%;"></div><div class="bar" style="width:50%;"></div></div></div><div class="sec"><div class="tag">2 · Main content (left) + sticky enquiry sidebar (right)</div><div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:40px;align-items:start"><div style="display:flex;flex-direction:column;gap:28px"><div class="img" style="height:380px;"><span>TREATMENT HERO IMAGE 16:9</span></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:200px;height:24px"></div><div class="bar" style=""></div><div class="bar" style=""></div><div class="bar" style="width:90%;"></div><div class="bar" style="width:60%;"></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:240px;height:24px"></div><div style="display:flex;gap:12px;align-items:center"><div class="img" style="width:20px;height:20px;flex:none"></div><div class="bar" style="width:80%;"></div></div><div style="display:flex;gap:12px;align-items:center"><div class="img" style="width:20px;height:20px;flex:none"></div><div class="bar" style="width:80%;"></div></div><div style="display:flex;gap:12px;align-items:center"><div class="img" style="width:20px;height:20px;flex:none"></div><div class="bar" style="width:80%;"></div></div><div style="display:flex;gap:12px;align-items:center"><div class="img" style="width:20px;height:20px;flex:none"></div><div class="bar" style="width:80%;"></div></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:220px;height:24px"></div><div class="bar" style=""></div><div class="bar" style="width:85%;"></div><div class="bar" style="width:75%;"></div></div></div><div class="card" style="gap:14px;padding:22px;position:relative"><div class="lbl" style="font:600 10px system-ui;color:#666;letter-spacing:.08em">STICKY SIDEBAR</div><div class="h" style="width:70%;height:22px"></div><div class="bar" style=""></div><div class="bar" style="width:80%;"></div><div style="border-top:1px dashed #aaa;padding-top:12px;display:flex;flex-direction:column;gap:10px"><div class="bar" style="width:90%;"></div><div class="bar" style="width:75%;"></div><div class="bar" style="width:85%;"></div></div><a href="Contact.dc.html" class="btn f">Send an enquiry</a><a href="Contact.dc.html" class="btn">WhatsApp us</a></div></div></div><div class="sec" style="background:#f4f4f4"><div class="tag">3 · Other treatments</div><div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px"><a href="TreatmentDetail.dc.html" class="card"><div class="img" style="height:120px;"><span>PHOTO</span></div><div class="h" style="width:70%;height:22px"></div><div class="bar" style=""></div></a><a href="TreatmentDetail.dc.html" class="card"><div class="img" style="height:120px;"><span>PHOTO</span></div><div class="h" style="width:70%;height:22px"></div><div class="bar" style=""></div></a><a href="TreatmentDetail.dc.html" class="card"><div class="img" style="height:120px;"><span>PHOTO</span></div><div class="h" style="width:70%;height:22px"></div><div class="bar" style=""></div></a></div></div><div style="padding:48px 64px 32px;background:#d9d9d9;position:relative">
+<div class="tag">Footer (same on every page)</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px">
+<div style="display:flex;flex-direction:column;gap:10px"><div class="img" style="width:150px;height:40px"><span>LOGO</span></div><div class="bar"></div><div class="bar" style="width:70%"></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:120px"></div><div class="bar" style="width:50%"></div><div class="bar" style="width:55%"></div><div class="bar" style="width:45%"></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:120px"></div><div class="bar" style="width:70%"></div><div class="bar" style="width:60%"></div><div class="bar" style="width:65%"></div></div>
+</div><div class="bar" style="margin-top:36px;width:80%"></div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

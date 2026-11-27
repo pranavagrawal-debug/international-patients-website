@@ -1,0 +1,11 @@
+{"v":3,"createdOnFiles":{"v":1,"at":"2026-11-27T09:00:00Z"},"title":"International patients website: wireframe","launch":{"view":"canvas"},"pages":[],"boards":{
+"Main.dc.html":{"x":0,"y":0,"w":1280,"h":2700,"title":"Home (desktop)","expand":"fill"},
+"HomeMobile.dc.html":{"x":1360,"y":0,"w":390,"h":3100,"title":"Home (mobile)"},
+"Treatments.dc.html":{"x":0,"y":2820,"w":1280,"h":1300,"title":"Treatments list","expand":"fill"},
+"TreatmentDetail.dc.html":{"x":1360,"y":2820,"w":1280,"h":1800,"title":"Treatment detail","expand":"fill"},
+"Doctors.dc.html":{"x":0,"y":4740,"w":1280,"h":1100,"title":"Doctors","expand":"fill"},
+"PlanYourVisit.dc.html":{"x":1360,"y":4740,"w":1280,"h":1300,"title":"Plan your visit","expand":"fill"},
+"FAQ.dc.html":{"x":0,"y":6160,"w":1280,"h":1100,"title":"FAQ","expand":"fill"},
+"Contact.dc.html":{"x":1360,"y":6160,"w":1280,"h":1400,"title":"Contact / enquiry form","expand":"fill"}},
+"order":["Main.dc.html","HomeMobile.dc.html","Treatments.dc.html","TreatmentDetail.dc.html","Doctors.dc.html","PlanYourVisit.dc.html","FAQ.dc.html","Contact.dc.html"],
+"notes":{"t1":{"x":0,"y":-300,"text":"International patients website: wireframe (layout only, content to follow)","kind":"title1","maxW":2640}},"designSystems":[]}

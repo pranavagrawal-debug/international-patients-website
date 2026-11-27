@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home wireframe</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;color:#222;background:#fff}
+a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
+.img{background:linear-gradient(to top right,transparent calc(50% - 1px),#b0b0b0 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#b0b0b0 50%,transparent calc(50% + 1px)),#ececec;border:1px solid #b0b0b0;display:flex;align-items:center;justify-content:center;color:#444;font:600 12px/1.2 system-ui;text-align:center;box-sizing:border-box}
+.img span{background:#ececec;padding:2px 8px}
+.bar{height:10px;background:#d2d2d2;border-radius:2px}
+.h{height:22px;background:#8f8f8f;border-radius:2px}
+.btn{border:1.5px solid #444;padding:13px 22px;font:600 13px system-ui;color:#222;display:inline-block;text-align:center}
+.btn.f{background:#444;color:#fff}
+.tag{position:absolute;top:10px;left:14px;font:600 10px system-ui;letter-spacing:.08em;color:#666;text-transform:uppercase}
+.sec{position:relative;padding:60px 64px 56px;border-bottom:1px dashed #aaa}
+.card{border:1px solid #aaa;padding:16px;display:flex;flex-direction:column;gap:10px;background:#fafafa}
+</style>
+</helmet>
+<div style="width:100%;max-width:1280px;margin:0 auto;background:#fff">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:72px;border-bottom:1px solid #888">
+<a href="Main.dc.html" class="img" style="width:150px;height:40px"><span>LOGO</span></a>
+<nav style="display:flex;gap:28px;font:500 14px system-ui"><a href="Treatments.dc.html">Treatments</a><a href="Doctors.dc.html">Doctors</a><a href="PlanYourVisit.dc.html">Plan your visit</a><a href="FAQ.dc.html">FAQ</a><a href="Contact.dc.html">Contact</a></nav>
+<a href="Contact.dc.html" class="btn f">WhatsApp / Send an enquiry</a>
+</div>
+
+<div class="sec" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;align-items:center">
+<div class="tag">1 · Hero</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="bar" style="width:140px"></div>
+<div class="h" style="width:95%;height:36px"></div><div class="h" style="width:70%;height:36px"></div>
+<div class="bar" style="width:90%"></div><div class="bar" style="width:85%"></div><div class="bar" style="width:60%"></div>
+<div style="display:flex;gap:12px;margin-top:8px"><a href="Contact.dc.html" class="btn f">Primary button: Send an enquiry</a><a href="Treatments.dc.html" class="btn">Secondary: View treatments</a></div>
+<div style="display:flex;gap:24px;margin-top:12px"><div style="display:flex;gap:8px;align-items:center"><div class="img" style="width:28px;height:28px;border-radius:14px"></div><div class="bar" style="width:80px"></div></div><div style="display:flex;gap:8px;align-items:center"><div class="img" style="width:28px;height:28px;border-radius:14px"></div><div class="bar" style="width:80px"></div></div><div style="display:flex;gap:8px;align-items:center"><div class="img" style="width:28px;height:28px;border-radius:14px"></div><div class="bar" style="width:80px"></div></div></div>
+</div>
+<div class="img" style="height:420px"><span>HERO IMAGE · hospital / care team photo</span></div>
+</div>
+
+<div class="sec" style="padding-top:48px;padding-bottom:40px">
+<div class="tag">2 · Trust strip (accreditations, countries served, years)</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+<sc-for list="{{stats}}" as="s" hint-placeholder-count="4"><div style="display:flex;gap:14px;align-items:center"><div class="img" style="width:52px;height:52px;border-radius:26px;flex:none"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="h" style="width:60%"></div><div class="bar" style="width:90%"></div></div></div></sc-for>
+</div></div>
+
+<div class="sec">
+<div class="tag">3 · Treatments grid (links to each treatment page)</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px"><div class="h" style="width:320px;height:28px"></div><div class="bar" style="width:520px"></div></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+<sc-for list="{{treatments}}" as="t" hint-placeholder-count="4"><a href="TreatmentDetail.dc.html" class="card"><div class="img" style="height:150px"><span>TREATMENT PHOTO 4:3</span></div><div class="h" style="width:70%"></div><div class="bar"></div><div class="bar" style="width:75%"></div><div style="font:600 13px system-ui;margin-top:4px">Learn more →</div></a></sc-for>
+</div></div>
+
+<div class="sec" style="background:#f4f4f4">
+<div class="tag">4 · How it works (5 steps)</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px"><div class="h" style="width:260px;height:28px"></div></div>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:10px"><div style="width:44px;height:44px;border-radius:22px;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;font:700 15px system-ui">{{s.n}}</div><div class="h" style="width:80%"></div><div class="bar"></div><div class="bar" style="width:70%"></div></div></sc-for>
+</div></div>
+
+<div class="sec">
+<div class="tag">5 · Doctors preview</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px"><div class="h" style="width:280px;height:28px"></div><a href="Doctors.dc.html" class="btn">All doctors →</a></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+<sc-for list="{{docs}}" as="d" hint-placeholder-count="3"><div class="card" style="flex-direction:row;gap:16px;align-items:center"><div class="img" style="width:96px;height:96px;border-radius:48px;flex:none"><span>PHOTO</span></div><div style="flex:1;display:flex;flex-direction:column;gap:9px"><div class="h" style="width:75%"></div><div class="bar" style="width:55%"></div><div class="bar" style="width:85%"></div></div></div></sc-for>
+</div></div>
+
+<div class="sec" style="background:#f4f4f4">
+<div class="tag">6 · Patient stories (optional)</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+<sc-for list="{{docs}}" as="d" hint-placeholder-count="3"><div class="card"><div class="bar"></div><div class="bar"></div><div class="bar" style="width:70%"></div><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="img" style="width:40px;height:40px;border-radius:20px;flex:none"></div><div class="bar" style="width:100px"></div></div></div></sc-for>
+</div></div>
+
+<div class="sec" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;background:#e6e6e6">
+<div class="tag">7 · Closing call to action</div>
+<div class="h" style="width:420px;height:30px"></div><div class="bar" style="width:520px"></div>
+<div style="display:flex;gap:12px;margin-top:8px"><a href="Contact.dc.html" class="btn f">Send an enquiry</a><a href="Contact.dc.html" class="btn">WhatsApp us</a></div>
+</div>
+
+<div style="padding:48px 64px 32px;background:#d9d9d9;position:relative">
+<div class="tag" style="top:10px">8 · Footer</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px">
+<div style="display:flex;flex-direction:column;gap:10px"><div class="img" style="width:150px;height:40px"><span>LOGO</span></div><div class="bar"></div><div class="bar" style="width:70%"></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:120px"></div><div class="bar" style="width:50%"></div><div class="bar" style="width:55%"></div><div class="bar" style="width:45%"></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:120px"></div><div class="bar" style="width:70%"></div><div class="bar" style="width:60%"></div><div class="bar" style="width:65%"></div></div>
+</div>
+<div class="bar" style="margin-top:36px;width:80%"></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2700}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+stats: [1,2,3,4].map((n) => ({ n })),
+treatments: [1,2,3,4].map((n) => ({ n })),
+steps: [1,2,3,4,5].map((n) => ({ n })),
+docs: [1,2,3].map((n) => ({ n }))
+};
+}
+}
+</script>
+</body>
+</html>

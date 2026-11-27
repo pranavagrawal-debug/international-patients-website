@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FAQ wireframe</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;color:#222;background:#fff}
+a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
+.img{background:linear-gradient(to top right,transparent calc(50% - 1px),#b0b0b0 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#b0b0b0 50%,transparent calc(50% + 1px)),#ececec;border:1px solid #b0b0b0;display:flex;align-items:center;justify-content:center;color:#444;font:600 12px/1.2 system-ui;text-align:center;box-sizing:border-box}
+.img span{background:#ececec;padding:2px 8px}
+.bar{height:10px;background:#d2d2d2;border-radius:2px}
+.h{height:22px;background:#8f8f8f;border-radius:2px}
+.btn{border:1.5px solid #444;padding:13px 22px;font:600 13px system-ui;color:#222;display:inline-block;text-align:center}
+.btn.f{background:#444;color:#fff}
+.tag{position:absolute;top:10px;left:14px;font:600 10px system-ui;letter-spacing:.08em;color:#666;text-transform:uppercase}
+.sec{position:relative;padding:60px 64px 56px;border-bottom:1px dashed #aaa}
+.card{border:1px solid #aaa;padding:16px;display:flex;flex-direction:column;gap:10px;background:#fafafa}
+</style>
+</helmet>
+<div style="width:100%;max-width:1280px;margin:0 auto;background:#fff">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:72px;border-bottom:1px solid #888">
+<a href="Main.dc.html" class="img" style="width:150px;height:40px"><span>LOGO</span></a>
+<nav style="display:flex;gap:28px;font:500 14px system-ui"><a href="Treatments.dc.html">Treatments</a><a href="Doctors.dc.html">Doctors</a><a href="PlanYourVisit.dc.html">Plan your visit</a><a href="FAQ.dc.html">FAQ</a><a href="Contact.dc.html">Contact</a></nav>
+<a href="Contact.dc.html" class="btn f">WhatsApp / Send an enquiry</a>
+</div><div class="sec" style="padding-bottom:40px;background:#f4f4f4"><div class="tag">1 · Page title</div>
+<div style="display:flex;flex-direction:column;gap:14px"><div style="font:500 12px system-ui;color:#555">Breadcrumb: Home / FAQ</div><div class="h" style="width:45%;height:34px"></div><div class="bar" style="width:60%;"></div><div class="bar" style="width:50%;"></div></div></div><div class="sec"><div class="tag">2 · Accordion (first item shown open, one question per row)</div><div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px"><div class="card" style="padding:18px 20px;gap:12px"><div style="display:flex;justify-content:space-between;align-items:center"><div class="h" style="width:55%;height:22px"></div><div style="font:700 18px system-ui">–</div></div><div class="bar" style=""></div><div class="bar" style="width:90%;"></div><div class="bar" style="width:60%;"></div></div><div class="card" style="padding:18px 20px;gap:12px"><div style="display:flex;justify-content:space-between;align-items:center"><div class="h" style="width:55%;height:22px"></div><div style="font:700 18px system-ui">+</div></div></div><div class="card" style="padding:18px 20px;gap:12px"><div style="display:flex;justify-content:space-between;align-items:center"><div class="h" style="width:55%;height:22px"></div><div style="font:700 18px system-ui">+</div></div></div><div class="card" style="padding:18px 20px;gap:12px"><div style="display:flex;justify-content:space-between;align-items:center"><div class="h" style="width:55%;height:22px"></div><div style="font:700 18px system-ui">+</div></div></div><div class="card" style="padding:18px 20px;gap:12px"><div style="display:flex;justify-content:space-between;align-items:center"><div class="h" style="width:55%;height:22px"></div><div style="font:700 18px system-ui">+</div></div></div><div class="card" style="padding:18px 20px;gap:12px"><div style="display:flex;justify-content:space-between;align-items:center"><div class="h" style="width:55%;height:22px"></div><div style="font:700 18px system-ui">+</div></div></div><div class="card" style="margin-top:28px;align-items:center;text-align:center;padding:28px;background:#e6e6e6"><div class="h" style="width:50%;height:24px"></div><div class="bar" style="width:70%;"></div><a href="Contact.dc.html" class="btn f" style="margin-top:6px">Ask us a question</a></div></div></div><div style="padding:48px 64px 32px;background:#d9d9d9;position:relative">
+<div class="tag">Footer (same on every page)</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px">
+<div style="display:flex;flex-direction:column;gap:10px"><div class="img" style="width:150px;height:40px"><span>LOGO</span></div><div class="bar"></div><div class="bar" style="width:70%"></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:120px"></div><div class="bar" style="width:50%"></div><div class="bar" style="width:55%"></div><div class="bar" style="width:45%"></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:120px"></div><div class="bar" style="width:70%"></div><div class="bar" style="width:60%"></div><div class="bar" style="width:65%"></div></div>
+</div><div class="bar" style="margin-top:36px;width:80%"></div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1300}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

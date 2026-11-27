@@ -1,1 +1,1 @@
-{"functions":{"api/index.php":{"runtime":"vercel-php@0.7.4"}},"routes":[{"src":"/","dest":"/wireframe/index.html"},{"src":"/(index|home-mobile|treatments|treatment-detail|doctors|plan-your-visit|faq|contact)\\.html","dest":"/wireframe/$1.html"},{"handle":"filesystem"},{"src":"/(.*)","dest":"/api/index.php"}]}
+{"functions":{"api/index.php":{"runtime":"vercel-php@0.7.4"}},"routes":[{"handle":"filesystem"},{"src":"/(.*)","dest":"/api/index.php"}]}

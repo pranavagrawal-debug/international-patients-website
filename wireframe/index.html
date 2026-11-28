@@ -4,6 +4,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta charset="utf-8">
 <title>Home wireframe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 <style>
@@ -26,6 +29,34 @@ a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
 .hero .t{background:rgba(255,255,255,.85);border-radius:2px}
 .chip{border:1.5px solid #bbb;padding:10px 14px;font:600 12px system-ui;color:#222;background:#fff;text-align:center;min-width:76px}
 .chip.on{background:#333;color:#fff;border-color:#333}
+
+/* EDIT HERE: TRUE ARTIS brand colours and fonts (colours sampled from trueartis.com; fonts are a close match) */
+:root{--gold:#c59d5f;--brown:#aa6d2b;--bg:#f8f7f4;--ink:#1d1d1b;--red:#b3472d;--serif:'Marcellus',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif}
+body{font-family:var(--sans);color:var(--ink)}
+nav{font-family:var(--sans)!important}
+.btn{font-family:var(--sans);border-color:var(--gold);border-radius:999px}
+.btn.f{background:var(--gold);border-color:var(--gold);color:#fff}
+.chip{font-family:var(--sans)}
+.chip.on{background:var(--gold);border-color:var(--gold)}
+/* Know your doctors */
+.dr-sec{background:var(--bg)}
+.dr-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:16px;flex-wrap:wrap}
+.dr-head h2{font:400 36px var(--serif);margin:0}
+.dr-ctrl{display:flex;gap:12px;align-items:center}
+.dr-all{font:600 13px var(--sans);color:var(--brown);margin-right:8px}
+.dr-arrow{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--gold);background:#fff;color:var(--gold);font-size:20px;line-height:1;cursor:pointer;padding:0}
+.dr-arrow:hover:not(:disabled){background:var(--gold);color:#fff}
+.dr-arrow:disabled{opacity:.35;cursor:default}
+.dr-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 14px;scrollbar-width:none}
+.dr-track::-webkit-scrollbar{display:none}
+.dr-card{flex:0 0 250px;scroll-snap-align:start;background:#fff;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:10px;color:inherit}
+.dr-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.12);text-decoration:none}
+.dr-photo{width:100%;aspect-ratio:1/1;border-radius:10px;border:2px solid var(--gold);background:#e9dcc6;overflow:hidden;display:flex;align-items:center;justify-content:center;font:400 54px var(--serif);color:var(--gold)}
+.dr-photo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.dr-name{font:400 20px var(--serif);margin:4px 0 0}
+.dr-deg{font-size:11px;line-height:1.5;color:var(--red);font-weight:500;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.dr-role{font-size:13px;line-height:1.45;color:#444;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dr-link{margin-top:auto;font:600 13px var(--sans);color:var(--brown)}
 </style>
 <div style="width:100%;max-width:1280px;margin:0 auto;background:#fff">
 <div style="display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:72px;border-bottom:1px solid #888">
@@ -51,11 +82,14 @@ a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
 </div>
 </div>
 
-<div class="sec" style="padding-top:48px;padding-bottom:40px">
-<div class="tag">2 · Trust strip (accreditations, countries served, years)</div>
-<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
-<div style="display:flex;gap:14px;align-items:center"><div class="img" style="width:52px;height:52px;border-radius:26px;flex:none"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="h" style="width:60%"></div><div class="bar" style="width:90%"></div></div></div><div style="display:flex;gap:14px;align-items:center"><div class="img" style="width:52px;height:52px;border-radius:26px;flex:none"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="h" style="width:60%"></div><div class="bar" style="width:90%"></div></div></div><div style="display:flex;gap:14px;align-items:center"><div class="img" style="width:52px;height:52px;border-radius:26px;flex:none"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="h" style="width:60%"></div><div class="bar" style="width:90%"></div></div></div><div style="display:flex;gap:14px;align-items:center"><div class="img" style="width:52px;height:52px;border-radius:26px;flex:none"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="h" style="width:60%"></div><div class="bar" style="width:90%"></div></div></div>
-</div></div>
+<div class="sec dr-sec" style="padding-top:56px;padding-bottom:44px">
+<div class="tag">2 · Know your doctors (scroll sideways, click a doctor to open their page)</div>
+<div class="dr-head">
+<h2>Know your doctors</h2>
+<div class="dr-ctrl"><a class="dr-all" href="doctors.html">See all doctors</a><button class="dr-arrow" id="drPrev" aria-label="Previous doctors">&#8592;</button><button class="dr-arrow" id="drNext" aria-label="Next doctors">&#8594;</button></div>
+</div>
+<div class="dr-track" id="drTrack"></div>
+</div>
 
 <div class="sec">
 <div class="tag">3 · Treatments grid (links to each treatment page)</div>
@@ -100,5 +134,33 @@ a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
 <div class="bar" style="margin-top:36px;width:80%"></div>
 </div>
 </div>
+<script src="/assets/doctors.js"></script>
+<script>
+(function(){
+  var t=document.getElementById('drTrack'),L=document.getElementById('drPrev'),R=document.getElementById('drNext');
+  if(!t||!window.DOCTORS)return;
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  t.innerHTML=window.DOCTORS.map(function(d,i){
+    var ini=d.name.replace('Dr. ','').split(' ').map(function(w){return w[0]}).join('');
+    return '<a class="dr-card" href="doctor-detail.html?d='+encodeURIComponent(d.slug)+'">'
+     +'<div class="dr-photo" data-i="'+i+'">'+ini+'</div>'
+     +'<h3 class="dr-name">'+esc(d.name)+'</h3>'
+     +'<div class="dr-deg">'+esc(d.degrees)+'</div>'
+     +'<div class="dr-role">'+esc(d.role)+'</div>'
+     +'<span class="dr-link">View profile &rarr;</span></a>';
+  }).join('');
+  Array.prototype.forEach.call(t.querySelectorAll('.dr-photo'),function(box){
+    var d=window.DOCTORS[+box.getAttribute('data-i')];
+    if(!d.photo)return;
+    var img=new Image();img.alt=d.name;
+    img.onload=function(){box.textContent='';box.appendChild(img)};
+    img.src=d.photo;
+  });
+  function upd(){L.disabled=t.scrollLeft<=2;R.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-2}
+  L.onclick=function(){t.scrollBy({left:-t.clientWidth*0.8})};
+  R.onclick=function(){t.scrollBy({left:t.clientWidth*0.8})};
+  t.addEventListener('scroll',upd);window.addEventListener('resize',upd);upd();
+})();
+</script>
 </body>
 </html>

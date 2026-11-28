@@ -24,7 +24,14 @@ a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
 
 /* EDIT HERE: hero background photo. Upload your image to public/assets/hero.jpg (GitHub: Add file > Upload files) and it appears automatically. */
 :root{--hero-image:url('/assets/hero.jpg')}
-.hero{position:relative;min-height:620px;padding:84px 64px 150px;box-sizing:border-box;color:#fff;border-bottom:1px dashed #aaa;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 66%,rgba(0,0,0,.92) 86%),linear-gradient(90deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.18) 50%,rgba(0,0,0,0) 100%),var(--hero-image),linear-gradient(135deg,#6a6a6a,#222);background-size:cover;background-position:center top}
+.hero{position:relative;min-height:620px;padding:84px 64px 150px;box-sizing:border-box;color:#fff;border-bottom:1px dashed #aaa;background:#222;overflow:hidden}
+.hero-slides,.hero-shade{position:absolute;inset:0}.hero-slides{z-index:0}
+.hero-shade{z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 66%,rgba(0,0,0,.92) 86%),linear-gradient(90deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.18) 50%,rgba(0,0,0,0) 100%)}
+.hs-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease}.hs-slide.on{opacity:1}
+.hs-arrow{position:absolute;z-index:3;top:46%;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.8);background:rgba(0,0,0,.35);color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:0}.hs-arrow:hover{background:var(--gold);border-color:var(--gold)}
+.hs-prev{left:20px}.hs-next{right:20px}
+.hs-dots{position:absolute;z-index:3;right:64px;bottom:44px;display:flex;gap:8px}.hs-dots button{width:10px;height:10px;border-radius:50%;border:1.5px solid #fff;background:transparent;padding:0;cursor:pointer}.hs-dots button.on{background:var(--gold);border-color:var(--gold);width:26px;border-radius:6px}
+@media(max-width:800px){.hs-arrow{top:auto;bottom:90px;width:40px;height:40px}.hs-dots{right:20px;bottom:104px}}
 .hero .tag{color:#ddd}
 .hero .t{background:rgba(255,255,255,.85);border-radius:2px}
 .chip{border:1.5px solid #bbb;padding:10px 14px;font:600 12px system-ui;color:#222;background:#fff;text-align:center;min-width:76px}
@@ -49,7 +56,8 @@ nav{font-family:var(--sans)!important}
 .dr-arrow:disabled{opacity:.35;cursor:default}
 .dr-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 14px;scrollbar-width:none}
 .dr-track::-webkit-scrollbar{display:none}
-.dr-card{flex:0 0 250px;scroll-snap-align:start;background:#fff;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:10px;color:inherit}
+.dr-card{flex:0 0 270px;scroll-snap-align:start;background:#fff;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:10px;color:inherit}
+.dr-exp{font-size:12px;color:#555}.dr-exp b{color:var(--brown)}.dr-tags{display:flex;flex-wrap:wrap;gap:5px}.dr-tags span{border:1px solid var(--gold);border-radius:999px;padding:3px 9px;font:600 10.5px var(--sans);background:#fbf4e6}
 .dr-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.12);text-decoration:none}
 .dr-photo{width:100%;aspect-ratio:1/1;border-radius:10px;border:2px solid var(--gold);background:#e9dcc6;overflow:hidden;display:flex;align-items:center;justify-content:center;font:400 54px var(--serif);color:var(--gold)}
 .dr-photo img{width:100%;height:100%;object-fit:cover;object-position:top}
@@ -62,11 +70,11 @@ nav{font-family:var(--sans)!important}
 .bm{background:#fff}.bm-grid{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:48px;align-items:center}
 .bm h2{font:400 36px var(--serif);margin:0 0 10px}.bm p{color:#555;max-width:520px;line-height:1.6}
 .bm-fig{background:var(--bg);border-radius:20px;padding:16px;text-align:center}
-.bm-tog{display:inline-flex;gap:6px;margin-bottom:8px}.bm-tog span{padding:7px 18px;border-radius:999px;border:1.5px solid var(--gold);font:600 12px var(--sans);cursor:pointer}.bm-tog span.on{background:var(--gold);color:#fff}
-.bm svg{width:100%;max-width:300px;height:auto}.body{fill:#e9dcc6}
-.hs{fill:var(--gold);fill-opacity:.35;stroke:var(--gold);stroke-width:2;cursor:pointer;transition:.2s;transform-box:fill-box;transform-origin:center}
-.hs:hover,.hs.hot{fill-opacity:.9;transform:scale(1.35)}.hs.pulse{animation:pl 2s infinite}@keyframes pl{50%{fill-opacity:.7}}
-.bm [data-side=rear]{display:none}.bm.rear [data-side=front]{display:none}.bm.rear [data-side=rear]{display:inline}
+.bm-fig{padding:8px}.bm-img{position:relative;max-width:360px;margin:0 auto}.bm-img img{display:block;width:100%;height:auto;border-radius:14px}.bm-hint{margin:6px 0 0;font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--brown)}
+.hs{position:absolute;transform:translate(-50%,-50%);aspect-ratio:1;border-radius:50%;border:2px solid rgba(197,157,95,.9);background:rgba(197,157,95,.12);cursor:pointer;padding:0;animation:hsp 2.2s infinite}
+.hs span{position:absolute;bottom:115%;left:50%;transform:translateX(-50%);white-space:nowrap;background:#1d1d1b;color:#fff;font:600 11px var(--sans);padding:5px 10px;border-radius:8px;opacity:0;pointer-events:none;transition:.15s}
+.hs:hover,.hs:focus-visible,.hs.hot{background:rgba(197,157,95,.55);border-color:var(--brown);animation:none;z-index:3}.hs:hover span,.hs:focus-visible span{opacity:1}
+@keyframes hsp{0%{box-shadow:0 0 0 0 rgba(197,157,95,.55)}70%{box-shadow:0 0 0 12px rgba(197,157,95,0)}100%{box-shadow:0 0 0 0 rgba(197,157,95,0)}}
 .bm-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.bm-chips a{border:1.5px solid var(--gold);border-radius:999px;padding:10px 18px;font:600 13px var(--sans);cursor:pointer;background:#fff}.bm-chips a:hover,.bm-chips a.hot{background:var(--gold);color:#fff;text-decoration:none}
 .zoomfx{position:fixed;inset:0;z-index:9999;pointer-events:none;background:radial-gradient(circle at var(--x) var(--y),#f8f7f4 0,#c59d5f 60%,#aa6d2b 100%);clip-path:circle(0 at var(--x) var(--y));transition:clip-path .75s cubic-bezier(.6,0,.2,1)}
 .zoomfx.go{clip-path:circle(150% at var(--x) var(--y))}
@@ -80,16 +88,18 @@ nav{font-family:var(--sans)!important}
 </div>
 
 <div class="hero">
-<div class="tag">1 · Hero (full-width background photo, text on the left)</div>
-<div class="img" style="position:absolute;top:28px;right:40px;width:84px;height:84px;border-radius:42px;background:rgba(255,255,255,.2);border-color:#ddd;color:#fff"><span style="background:transparent">BADGE</span></div>
-<div style="max-width:520px;display:flex;flex-direction:column;gap:18px">
+<div class="hero-slides" id="heroSlides"></div><div class="hero-shade"></div>
+<button class="hs-arrow hs-prev" id="hsPrev" aria-label="Previous photo">&#8592;</button><button class="hs-arrow hs-next" id="hsNext" aria-label="Next photo">&#8594;</button><div class="hs-dots" id="hsDots"></div>
+<div class="tag" style="z-index:2">1 · Hero (rotating photos, text on the left)</div>
+<div class="img" style="position:absolute;z-index:2;top:28px;right:40px;width:84px;height:84px;border-radius:42px;background:rgba(255,255,255,.2);border-color:#ddd;color:#fff"><span style="background:transparent">BADGE</span></div>
+<div style="position:relative;z-index:2;max-width:520px;display:flex;flex-direction:column;gap:18px">
 <div style="font:600 11px system-ui;letter-spacing:.14em;text-transform:uppercase;color:#eee">Eyebrow: international patient services</div>
 <div style="font:700 56px/1.08 system-ui">Headline goes here, two or three lines</div>
 <div style="font:400 15px/1.6 system-ui;color:#eee">Short supporting paragraph: what you treat, who it is for, and what makes you different. Three or four lines.</div>
 <div style="display:flex;gap:14px;align-items:center;margin-top:6px"><a href="contact.html" class="btn f" style="background:#fff;color:#222;border-color:#fff">Primary button</a><a href="treatments.html" class="btn" style="color:#fff;border-color:#fff">Secondary button</a></div>
 <div style="display:flex;gap:28px;font:600 12px system-ui;color:#eee;margin-top:10px"><div>10,000+ patients</div><div>40+ countries</div><div>15+ years</div></div>
 </div>
-<div style="position:absolute;left:64px;right:auto;bottom:36px;display:flex;background:#fff;border:1px solid #aaa;color:#222;max-width:1000px">
+<div style="position:absolute;z-index:2;left:64px;right:auto;bottom:36px;display:flex;background:#fff;border:1px solid #aaa;color:#222;max-width:1000px">
 <div style="background:#333;color:#fff;padding:18px 22px;min-width:170px;display:flex;flex-direction:column;gap:6px;font:700 14px system-ui">Plan your treatment<span style="font:400 11px system-ui;color:#ddd">Step 1 of 3</span></div>
 <div style="padding:14px 18px;display:flex;flex-direction:column;gap:8px"><div style="font:600 9px system-ui;letter-spacing:.12em;color:#555">WHICH TREATMENT</div><div style="display:flex;gap:8px"><div class="chip on">Treatment 1</div><div class="chip">Treatment 2</div><div class="chip">Treatment 3</div><div class="chip">Treatment 4</div><div class="chip">Not sure</div></div></div>
 <a href="contact.html" class="btn f" style="align-self:center;margin:0 18px">Begin my plan →</a>
@@ -105,7 +115,7 @@ nav{font-family:var(--sans)!important}
 <div class="dr-track" id="drTrack"></div>
 </div>
 
-<div class="sec bm" id="bm" style="padding-top:56px;padding-bottom:56px"><div class="tag">Body map (click an area to open the price calculator)</div><div class="bm-grid"><div class="bm-fig"><div class="bm-tog"><span class="on" data-s="front">Front</span><span data-s="rear">Rear</span></div><svg viewBox="0 0 300 600" aria-label="Body map"><g class="body"><ellipse cx="150" cy="46" rx="30" ry="38"/><rect x="138" y="80" width="24" height="30"/><path d="M104 112Q150 98 196 112L206 210Q190 270 186 318L114 318Q110 270 94 210Z"/><path d="M104 118L62 212L48 320" fill="none" stroke="#e9dcc6" stroke-width="22" stroke-linecap="round"/><path d="M196 118L238 212L252 320" fill="none" stroke="#e9dcc6" stroke-width="22" stroke-linecap="round"/><path d="M128 316L122 470L120 585" fill="none" stroke="#e9dcc6" stroke-width="40" stroke-linecap="round"/><path d="M172 316L178 470L180 585" fill="none" stroke="#e9dcc6" stroke-width="40" stroke-linecap="round"/></g><circle class="hs pulse" data-area="hair" data-side="front" cx="150" cy="14" r="9"><title>Hair</title></circle><circle class="hs pulse" data-area="eyes" data-side="front" cx="150" cy="42" r="9"><title>Eyes</title></circle><circle class="hs pulse" data-area="nose" data-side="front" cx="150" cy="62" r="8"><title>Nose</title></circle><circle class="hs pulse" data-area="face" data-side="front" cx="150" cy="92" r="9"><title>Face & neck</title></circle><circle class="hs pulse" data-area="breast" data-side="front" cx="150" cy="160" r="16"><title>Breast & chest</title></circle><circle class="hs pulse" data-area="body" data-side="front" cx="150" cy="245" r="16"><title>Abdomen & body contouring</title></circle><circle class="hs pulse" data-area="body" data-side="front" cx="57" cy="235" r="11"><title>Arms</title></circle><circle class="hs pulse" data-area="body" data-side="front" cx="243" cy="235" r="11"><title>Arms</title></circle><circle class="hs pulse" data-area="body" data-side="front" cx="128" cy="370" r="14"><title>Thighs</title></circle><circle class="hs pulse" data-area="body" data-side="front" cx="172" cy="370" r="14"><title>Thighs</title></circle><circle class="hs pulse" data-area="hair" data-side="rear" cx="150" cy="14" r="9"><title>Hair</title></circle><circle class="hs pulse" data-area="body" data-side="rear" cx="150" cy="180" r="16"><title>Back</title></circle><circle class="hs pulse" data-area="buttocks" data-side="rear" cx="130" cy="300" r="16"><title>Buttocks & hips</title></circle><circle class="hs pulse" data-area="buttocks" data-side="rear" cx="170" cy="300" r="16"><title>Buttocks & hips</title></circle><circle class="hs pulse" data-area="buttocks" data-side="rear" cx="128" cy="500" r="12"><title>Calves</title></circle><circle class="hs pulse" data-area="buttocks" data-side="rear" cx="172" cy="500" r="12"><title>Calves</title></circle></svg></div><div><div class="eyebrow" style="font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--brown)">Price calculator</div><h2>Where would you like to start?</h2><p>Tap the area of the body you are interested in. We will take you straight to the price calculator for that area, where you can pick your procedure, options, stay and more.</p><div class="bm-chips"><a data-area="eyes" href="price-calculator.html?area=eyes">Eyes</a><a data-area="nose" href="price-calculator.html?area=nose">Nose</a><a data-area="face" href="price-calculator.html?area=face">Face & neck</a><a data-area="breast" href="price-calculator.html?area=breast">Breast & chest</a><a data-area="body" href="price-calculator.html?area=body">Body contouring</a><a data-area="buttocks" href="price-calculator.html?area=buttocks">Buttocks, hips & legs</a><a data-area="hair" href="price-calculator.html?area=hair">Hair</a><a data-area="skin" href="price-calculator.html?area=skin">Skin & non-surgical</a></div></div></div></div>
+<div class="sec bm" id="bm" style="padding-top:56px;padding-bottom:56px"><div class="tag">Price calculator</div><div class="bm-grid"><div class="bm-fig"><div class="bm-img"><img src="/assets/body-map.png" alt="Body map. Tap a glowing circle to choose an area."><button type="button" class="hs" data-area="face" aria-label="Face, eyes, nose & hair" style="left:49.8%;top:6.9%;width:11.5%"><span>Face, eyes, nose & hair</span></button><button type="button" class="hs" data-area="face" aria-label="Face & neck" style="left:49.8%;top:15.2%;width:11.5%"><span>Face & neck</span></button><button type="button" class="hs" data-area="body" aria-label="Shoulders & arms" style="left:35.8%;top:23.6%;width:11.5%"><span>Shoulders & arms</span></button><button type="button" class="hs" data-area="body" aria-label="Shoulders & arms" style="left:63.2%;top:23.6%;width:11.5%"><span>Shoulders & arms</span></button><button type="button" class="hs" data-area="breast" aria-label="Breast & chest" style="left:42.0%;top:28.8%;width:11.5%"><span>Breast & chest</span></button><button type="button" class="hs" data-area="breast" aria-label="Breast & chest" style="left:58.0%;top:28.8%;width:11.5%"><span>Breast & chest</span></button><button type="button" class="hs" data-area="body" aria-label="Abdomen & body contouring" style="left:49.8%;top:36.2%;width:11.5%"><span>Abdomen & body contouring</span></button><button type="button" class="hs" data-area="buttocks" aria-label="Hips & buttocks" style="left:38.0%;top:42.1%;width:11.5%"><span>Hips & buttocks</span></button><button type="button" class="hs" data-area="buttocks" aria-label="Hips & buttocks" style="left:60.8%;top:42.1%;width:11.5%"><span>Hips & buttocks</span></button><button type="button" class="hs" data-area="body" aria-label="Lower abdomen" style="left:49.8%;top:48.3%;width:11.5%"><span>Lower abdomen</span></button><button type="button" class="hs" data-area="buttocks" aria-label="Thighs & legs" style="left:34.8%;top:65.0%;width:11.5%"><span>Thighs & legs</span></button><button type="button" class="hs" data-area="body" aria-label="Inner thighs" style="left:49.8%;top:66.0%;width:11.5%"><span>Inner thighs</span></button><button type="button" class="hs" data-area="buttocks" aria-label="Thighs & legs" style="left:64.8%;top:65.0%;width:11.5%"><span>Thighs & legs</span></button></div><p class="bm-hint">Tap a glowing circle</p></div><div><div class="eyebrow" style="font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--brown)">Price calculator</div><h2>Where would you like to start?</h2><p>Tap the area of the body you are interested in. We will take you straight to the price calculator for that area, where you can pick your procedure, options, stay and more.</p><div class="bm-chips"><a data-area="eyes" href="price-calculator.html?area=eyes">Eyes</a><a data-area="nose" href="price-calculator.html?area=nose">Nose</a><a data-area="face" href="price-calculator.html?area=face">Face & neck</a><a data-area="breast" href="price-calculator.html?area=breast">Breast & chest</a><a data-area="body" href="price-calculator.html?area=body">Body contouring</a><a data-area="buttocks" href="price-calculator.html?area=buttocks">Buttocks, hips & legs</a><a data-area="hair" href="price-calculator.html?area=hair">Hair</a><a data-area="skin" href="price-calculator.html?area=skin">Skin & non-surgical</a></div></div></div></div>
 
 <div class="sec">
 <div class="tag">3 · Treatments grid (links to each treatment page)</div>
@@ -163,6 +173,8 @@ nav{font-family:var(--sans)!important}
      +'<h3 class="dr-name">'+esc(d.name)+'</h3>'
      +'<div class="dr-deg">'+esc(d.degrees)+'</div>'
      +'<div class="dr-role">'+esc(d.role)+'</div>'
+     +'<div class="dr-exp"><b>'+esc(d.exp||'')+'</b> experience'+(d.cases?' · <b>'+esc(d.cases)+'</b> cases':'')+'</div>'
+     +'<div class="dr-tags">'+(d.special||[]).slice(0,4).map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div>'
      +'<span class="dr-link">View profile &rarr;</span></a>';
   }).join('');
   Array.prototype.forEach.call(t.querySelectorAll('.dr-photo'),function(box){
@@ -176,6 +188,26 @@ nav{font-family:var(--sans)!important}
   L.onclick=function(){t.scrollBy({left:-t.clientWidth*0.8})};
   R.onclick=function(){t.scrollBy({left:t.clientWidth*0.8})};
   t.addEventListener('scroll',upd);window.addEventListener('resize',upd);upd();
+})();
+</script>
+<script>
+(function(){
+  /* EDIT HERE: hero photos in order. First one is shown first. Upload new photos to public/assets and add them here. */
+  var PHOTOS=['/assets/hero.jpg','/assets/hero-2.jpg','/assets/hero-3.jpg','/assets/hero-4.jpg','/assets/hero-5.jpg'];
+  var SECONDS=5;
+  var box=document.getElementById('heroSlides'),dots=document.getElementById('hsDots');if(!box)return;
+  var cur=0,timer=null,slides=[],ds=[];
+  PHOTOS.forEach(function(u,i){
+    var d=document.createElement('div');d.className='hs-slide'+(i===0?' on':'');d.style.backgroundImage="url('"+u+"')";if(i===0)d.style.backgroundPosition='center top';box.appendChild(d);slides.push(d);
+    var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Photo '+(i+1));b.className=i===0?'on':'';b.onclick=function(){go(i,true)};dots.appendChild(b);ds.push(b);
+    if(i>0){var im=new Image();im.src=u}
+  });
+  function go(n,manual){slides[cur].classList.remove('on');ds[cur].classList.remove('on');cur=(n+slides.length)%slides.length;slides[cur].classList.add('on');ds[cur].classList.add('on');if(manual)restart()}
+  function restart(){clearInterval(timer);if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;timer=setInterval(function(){go(cur+1)},SECONDS*1000)}
+  document.getElementById('hsNext').onclick=function(){go(cur+1,true)};
+  document.getElementById('hsPrev').onclick=function(){go(cur-1,true)};
+  var hero=document.querySelector('.hero');hero.addEventListener('mouseenter',function(){clearInterval(timer)});hero.addEventListener('mouseleave',restart);
+  restart();
 })();
 </script>
 <script>

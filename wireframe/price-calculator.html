@@ -95,7 +95,7 @@ var CONDS=['Heart or circulation condition','Uncontrolled diabetes','Blood-thinn
 function opt(on,act,data,t,s){return '<div class="opt'+(on?' on':'')+'" data-a="'+act+'" '+data+'><b>'+t+'</b>'+(s?'<small>'+s+'</small>':'')+'</div>'}
 function head(t,s){return '<div class="bar">'+STEPS.map(function(_,i){return '<i class="'+(i<=S.step?'on':'')+'"></i>'}).join('')+'</div><div class="eyebrow">Step '+(S.step+1)+' of '+STEPS.length+'</div><h1>'+t+'</h1><p class="sub">'+s+'</p>'}
 function foot(ok){return '<div class="nav"><button class="btn" data-a="back"'+(S.step?'':' style="visibility:hidden"')+'>← Back</button>'+(S.step<6?'<button class="btn f" data-a="next"'+(ok===false?' disabled':'')+'>Continue →</button>':'')+'</div>'}
-function withTop(h){var i=h.lastIndexOf('<div class="nav">');if(i<0)return h;var nav=h.slice(i).replace('<div class="nav">','<div class="nav navtop">'),k=h.indexOf('<div class="eyebrow">');return h.slice(0,k)+nav+h.slice(k)}
+function withTop(h){if(S.step===0)return h;var i=h.lastIndexOf('<div class="nav">');if(i<0)return h;var nav=h.slice(i).replace('<div class="nav">','<div class="nav navtop">'),body=h.slice(0,i),k=body.indexOf('<div class="eyebrow">');return body.slice(0,k)+nav+body.slice(k)}
 var V=[
 function(){ // 1 operation
   var a=AREA[S.area];

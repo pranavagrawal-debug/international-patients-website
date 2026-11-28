@@ -31,7 +31,25 @@ label.l{display:block;font:600 12px var(--sans);margin:0 0 6px}
 input,select{width:100%;padding:12px 14px;border:1.5px solid #e2dccf;border-radius:12px;font:400 14px var(--sans);background:#fff}
 .note{border-left:3px solid var(--gold);background:#fbf4e6;border-radius:10px;padding:12px 16px;font-size:13px;line-height:1.55;margin:16px 0}
 .note.warn{border-color:var(--red);background:#fdeeea}
-.nav{display:flex;justify-content:space-between;margin-top:30px}
+.nav{display:flex;justify-content:space-between;margin-top:30px}.nav.navtop{margin:0 0 20px}
+.opt.none{background:#faf9f6;border-style:dashed}.opt.none.on{background:#fbf4e6}
+.dtags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}.dtags i{font:600 10px var(--sans);font-style:normal;border:1px solid var(--gold);background:#fbf4e6;border-radius:999px;padding:2px 8px;color:var(--ink)}
+.dexp{font-size:12px;margin-top:6px;color:#555}.dexp b,.opt .dexp b{display:inline;padding:0;margin:0;font-size:inherit;color:var(--brown)}.dlink{display:inline-block;margin-top:8px;font:600 12px var(--sans);color:var(--brown)}
+.dmatch{display:inline-block;margin-top:6px;font:600 11px var(--sans);color:#2f7d4f}
+.imap{display:grid;grid-template-columns:minmax(280px,400px) 1fr;gap:22px;align-items:start}
+.imap svg{width:100%;height:auto;background:#fbf9f4;border-radius:16px;display:block}
+.st{fill:#e9dcc6;stroke:#fff;stroke-width:1}
+.pin{cursor:pointer}.pin .dot{fill:var(--gold);stroke:#fff;stroke-width:2.5}.pin .dot{r:8px}.pin .ring{fill:var(--gold);fill-opacity:.35;transform-box:fill-box;transform-origin:center;animation:pr 1.8s infinite}
+@keyframes pr{0%{transform:scale(.6);fill-opacity:.55}100%{transform:scale(2.6);fill-opacity:0}}
+.pin text{font:600 13px var(--sans);fill:var(--ink);paint-order:stroke;stroke:#fbf9f4;stroke-width:3px}
+.pin:hover .dot,.pin.sel .dot{fill:var(--brown)}.pin.add .dot{fill:#2f7d4f}
+.ipanel{background:#fbf9f4;border-radius:16px;padding:18px;min-height:380px}
+.ipanel h3{font:400 26px var(--serif);margin:0 0 4px}
+.gal{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:130px 130px;gap:8px;margin:12px 0}
+.gal div{background:linear-gradient(135deg,#e9dcc6,#c9a96f);border-radius:12px;overflow:hidden}.gal div:first-child{grid-row:span 2}.gal img{width:100%;height:100%;object-fit:cover;display:block}
+.sights{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.sights span{border:1px solid #e2dccf;border-radius:999px;padding:4px 10px;font-size:12px;background:#fff}
+.credit{font-size:11px;color:#999;margin-top:10px}
+@media(max-width:900px){.imap{grid-template-columns:1fr}}
 .side{background:var(--dark);color:#fff;border-radius:22px;padding:26px;position:sticky;top:16px}
 .side h4{margin:0;font:400 20px var(--serif)}.price{font:400 32px/1.2 var(--serif);color:var(--gold);margin:8px 0 4px}
 .side small{color:#bbb;font-size:12px}.side .r{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #3a3a37;font-size:13px}
@@ -45,14 +63,14 @@ table{width:100%;border-collapse:collapse;font-size:14px}td{padding:10px 0;borde
 <a href="contact.html" class="btn f">WhatsApp / Send an enquiry</a></div>
 <div class="sample" id="sample" hidden>Sample prices for design only. Real True Artis prices will replace these before launch.</div>
 <div class="shell"><div class="card" id="main"></div><aside class="side" id="side"></aside></div>
-<script src="/assets/calculator-data.js"></script><script src="/assets/doctors.js"></script>
+<script src="/assets/calculator-data.js"></script><script src="/assets/india-map.js"></script><script src="/assets/doctors.js"></script>
 <script>
 (function(){
 var C=window.CALC,D=window.DOCTORS||[],Q=new URLSearchParams(location.search);
 var STEPS=['Operation','Options','About you','Surgeon','Stay & services','Explore India','Date & estimate'];
 var ITEM={},GRP={},AREA={};
 C.areas.forEach(function(a){AREA[a.id]=a;a.groups.forEach(function(g,gi){g.id=a.id+gi;g.items.forEach(function(i){ITEM[i.i]=i;GRP[i.i]=g})})});
-var S={step:0,area:AREA[Q.get('area')]?Q.get('area'):'eyes',proc:null,add:{},ch:{},rev:false,h:'',w:'',cond:{},doc:'',room:'standard',occ:'single',extra:0,tr:false,lang:'',trips:{},date:'',flex:false,sent:false};
+var S={step:0,area:AREA[Q.get('area')]?Q.get('area'):'eyes',proc:null,add:{},ch:{},rev:false,h:'',w:'',cond:{},doc:'',room:'standard',occ:'single',extra:0,tr:false,lang:'',trips:{},view:'',date:'',flex:false,sent:false};
 var $=function(s){return document.querySelector(s)};
 var $$=function(s){return [].slice.call(document.querySelectorAll(s))};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -68,12 +86,16 @@ function calc(){
   C.trips.forEach(function(t){if(S.trips[t.id])trip+=t.p});
   var x=hotel+tr+trip;return{p:p,mn:mn,mx:mx,days:days,nights:nights,hotel:hotel,tr:tr,trip:trip,n:n,tmn:mn+x,tmx:mx+x};
 }
+function procArea(){var r='';C.areas.forEach(function(a){a.groups.forEach(function(g){g.items.forEach(function(i){if(i.i===S.proc)r=a.id})})});return r||S.area}
+function eligible(){var a=procArea();return D.filter(function(d){return !d.areas||d.areas.indexOf(a)>-1})}
 function bmi(){var h=+S.h/100,w=+S.w;return h>0&&w>0?w/(h*h):0}
+function flagged0(){return Object.keys(S.cond).some(function(k){return S.cond[k]})}
 function flagged(){var b=bmi();return Object.keys(S.cond).some(function(k){return S.cond[k]})||(b&&(b>=35||b<17))}
 var CONDS=['Heart or circulation condition','Uncontrolled diabetes','Blood-thinning medication','Bleeding disorder','Pregnant or breastfeeding','Smoker'];
 function opt(on,act,data,t,s){return '<div class="opt'+(on?' on':'')+'" data-a="'+act+'" '+data+'><b>'+t+'</b>'+(s?'<small>'+s+'</small>':'')+'</div>'}
 function head(t,s){return '<div class="bar">'+STEPS.map(function(_,i){return '<i class="'+(i<=S.step?'on':'')+'"></i>'}).join('')+'</div><div class="eyebrow">Step '+(S.step+1)+' of '+STEPS.length+'</div><h1>'+t+'</h1><p class="sub">'+s+'</p>'}
 function foot(ok){return '<div class="nav"><button class="btn" data-a="back"'+(S.step?'':' style="visibility:hidden"')+'>← Back</button>'+(S.step<6?'<button class="btn f" data-a="next"'+(ok===false?' disabled':'')+'>Continue →</button>':'')+'</div>'}
+function withTop(h){var i=h.lastIndexOf('<div class="nav">');if(i<0)return h;var nav=h.slice(i).replace('<div class="nav">','<div class="nav navtop">'),k=h.indexOf('<div class="eyebrow">');return h.slice(0,k)+nav+h.slice(k)}
 var V=[
 function(){ // 1 operation
   var a=AREA[S.area];
@@ -84,21 +106,27 @@ function(){ // 1 operation
   return h+foot(!!S.proc)},
 function(){ // 2 options
   var p=ITEM[S.proc],g=GRP[S.proc],h=head('Options & add-ons','Customise <b>'+esc(p.n)+'</b>. Everything here is optional.'),any=false;
-  g.items.forEach(function(i){if(i.t==='C'){any=true;h+='<h3 class="g">'+esc(i.n)+'</h3><div class="chips">'+i.o.map(function(o){return '<span class="chip'+(S.ch[i.i]===o?' on':'')+'" data-a="ch" data-g="'+i.i+'" data-v="'+esc(o)+'">'+esc(o.charAt(0).toUpperCase()+o.slice(1))+'</span>'}).join('')+'</div>'}});
+  g.items.forEach(function(i){if(i.t==='C'){any=true;h+='<h3 class="g">'+esc(i.n)+'</h3><div class="chips"><span class="chip'+(S.ch[i.i]==null?' on':'')+'" data-a="chnone" data-g="'+i.i+'">None / not sure</span>'+i.o.map(function(o){return '<span class="chip'+(S.ch[i.i]===o?' on':'')+'" data-a="ch" data-g="'+i.i+'" data-v="'+esc(o)+'">'+esc(o.charAt(0).toUpperCase()+o.slice(1))+'</span>'}).join('')+'</div>'}});
   var ad=g.items.filter(function(i){return i.t==='A'||i.t==='N'});
-  if(ad.length){any=true;h+='<h3 class="g">Add-ons</h3><div class="grid">'+ad.map(function(i){return opt(S.add[i.i],'add','data-v="'+i.i+'"',esc(i.n),i.t==='A'?'+ '+rng(i.a,i.b)+(i.d>p.d?' · longer stay':''):'No extra charge · discussed with your surgeon')}).join('')+'</div>'}
+  if(ad.length){any=true;h+='<h3 class="g">Add-ons</h3><div class="grid">'+opt(!ad.some(function(i){return S.add[i.i]}),'addnone','data-v="0"','None','No add-ons, just the operation').replace('class="opt','class="opt none')+ad.map(function(i){return opt(S.add[i.i],'add','data-v="'+i.i+'"',esc(i.n),i.t==='A'?'+ '+rng(i.a,i.b)+(i.d>p.d?' · longer stay':''):'No extra charge · discussed with your surgeon')}).join('')+'</div>'}
   if(!any)h+='<div class="note">No extra options for this procedure. Continue to the next step.</div>';
   return h+foot()},
 function(){ // 3 about you
   var h=head('About you','Revision surgery is more complex, so it costs more. A few health questions can also change your price, or whether surgery is safe right now.');
   h+='<div class="grid" style="max-width:480px">'+opt(!S.rev,'rev','data-v="0"','Primary','First-time procedure')+opt(S.rev,'rev','data-v="1"','Secondary / revision','Correcting earlier surgery · +40%')+'</div>';
   h+='<h3 class="g">Health &amp; suitability</h3><div class="row"><div><label class="l">Height (cm)</label><input id="h" type="number" placeholder="170" value="'+esc(S.h)+'"></div><div><label class="l">Weight (kg)</label><input id="w" type="number" placeholder="70" value="'+esc(S.w)+'"></div><div><label class="l">Your BMI</label><div id="bmi" style="padding:12px 0;font-weight:600">'+(bmi()?bmi().toFixed(1):'–')+'</div></div></div>';
-  h+='<h3 class="g" style="font-size:15px;font-family:var(--sans)">Do any of these apply to you?</h3><div class="chips">'+CONDS.map(function(c){return '<span class="chip'+(S.cond[c]?' on':'')+'" data-a="cond" data-v="'+c+'">'+c+'</span>'}).join('')+'</div><div id="suit"></div>';
+  h+='<h3 class="g" style="font-size:15px;font-family:var(--sans)">Do any of these apply to you?</h3><div class="chips">'+'<span class="chip'+(flagged0()?'':' on')+'" data-a="condnone">None of these</span>'+CONDS.map(function(c){return '<span class="chip'+(S.cond[c]?' on':'')+'" data-a="cond" data-v="'+c+'">'+c+'</span>'}).join('')+'</div><div id="suit"></div>';
   return h+foot()},
 function(){ // 4 surgeon
-  var h=head('Choose your surgeon','Pick a surgeon, or let us match you on results, communication and character.');
-  h+='<div class="grid">'+D.map(function(d){var ini=d.name.replace('Dr. ','').split(' ').map(function(w){return w[0]}).join('');
-    return '<div class="opt'+(S.doc===d.slug?' on':'')+'" data-a="doc" data-v="'+d.slug+'"><div class="photo" data-p="'+esc(d.photo||'')+'">'+ini+'</div><b>'+esc(d.name)+'</b><small>'+esc(d.role)+'</small></div>'}).join('')+opt(S.doc==='help','doc','data-v="help"','Help me choose','We will match you on results, communication and character')+'</div>';
+  var el=eligible(),ar=AREA[procArea()],p=ITEM[S.proc];
+  if(S.doc&&S.doc!=='help'&&S.doc!=='none'&&!el.some(function(d){return d.slug===S.doc}))S.doc='';
+  var h=head('Choose your surgeon','Showing surgeons who treat <b>'+esc(ar.name.toLowerCase())+'</b>'+(p?' (for <b>'+esc(p.n)+'</b>)':'')+'. Pick one, or let us match you.');
+  h+='<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(230px,1fr))">'+el.map(function(d){var ini=d.name.replace('Dr. ','').split(' ').map(function(w){return w[0]}).join('');
+    return '<div class="opt'+(S.doc===d.slug?' on':'')+'" data-a="doc" data-v="'+d.slug+'"><div class="photo" data-p="'+esc(d.photo||'')+'">'+ini+'</div><b>'+esc(d.name)+'</b><small>'+esc(d.degrees||'')+'</small>'
+     +'<div class="dexp"><b>'+esc(d.exp||'')+'</b> experience'+(d.cases?' · <b>'+esc(d.cases)+'</b> cases':'')+'</div>'
+     +'<div class="dtags">'+(d.special||[]).slice(0,5).map(function(x){return '<i>'+esc(x)+'</i>'}).join('')+'</div>'
+     +'<a class="dlink" href="doctor-detail.html?d='+encodeURIComponent(d.slug)+'" target="_blank" onclick="event.stopPropagation()">Full profile →</a></div>'}).join('')
+   +opt(S.doc==='help','doc','data-v="help"','No preference','Let us match you with the right surgeon on results, communication and character').replace('class="opt','class="opt none')+'</div>';
   return h+foot()},
 function(){ // 5 stay
   var c=calc(),h=head('Stay & services','Hotel room, language support and extra nights. Nights are set from your operation.');
@@ -109,8 +137,15 @@ function(){ // 5 stay
   if(S.tr)h+='<div style="max-width:320px;margin-top:12px"><label class="l">Which language?</label><select id="lang"><option value="">Choose a language</option>'+C.langs.map(function(l){return '<option'+(S.lang===l?' selected':'')+'>'+l+'</option>'}).join('')+'</select></div>';
   return h+foot()},
 function(){ // 6 explore
-  var h=head('Explore India with us','Optional. After your surgeon clears you to travel, we arrange the trip. Prices are per person.');
-  h+='<div class="grid">'+C.trips.map(function(t){return opt(S.trips[t.id],'trip','data-v="'+t.id+'"',t.n,esc(t.s)+'<br>'+t.days+' day'+(t.days>1?'s':'')+' · from '+money(t.p))}).join('')+'</div>';
+  var h=head('Explore India with us','Optional. Tap a glowing pin to see the place, then add it to your trip. After your surgeon clears you to travel, we arrange everything. Prices are per person.');
+  var M=window.INDIA_MAP,tr=C.trips,cur=tr.filter(function(t){return t.id===S.view})[0];
+  var svg='<svg viewBox="'+M.viewBox+'" aria-label="Map of India with trip locations">'+M.states.map(function(x){return '<path class="st" d="'+x.d+'"/>'}).join('')
+   +tr.map(function(t){var left=['delhi','himachal','goa','ooty'].indexOf(t.id)>-1,x=t.pin[0],y=t.pin[1];
+     return '<g class="pin'+(S.view===t.id?' sel':'')+(S.trips[t.id]?' add':'')+'" data-a="view" data-v="'+t.id+'"><circle cx="'+x+'" cy="'+y+'" r="15" fill="#fff" fill-opacity="0.01"/><circle class="ring" cx="'+x+'" cy="'+y+'" r="9"/><circle class="dot" cx="'+x+'" cy="'+y+'" r="6.5"/><text x="'+(left?x-13:x+13)+'" y="'+(y+4)+'" text-anchor="'+(left?'end':'start')+'">'+esc(t.n.replace(' sightseeing','').replace(' & the Taj Mahal',' & Taj Mahal'))+'</text></g>'}).join('')+'</svg>';
+  var panel=cur?'<h3>'+esc(cur.n)+'</h3><div class="sub" style="margin:0">'+esc(cur.s)+'</div><div class="gal" id="gal"><div></div><div></div><div></div></div><div class="sights">'+(cur.sights||[]).map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div><p style="margin:8px 0 14px;font-size:14px"><b>'+cur.days+' day'+(cur.days>1?'s':'')+'</b> · from <b>'+money(cur.p)+'</b> per person</p><button class="btn '+(S.trips[cur.id]?'':'f')+'" data-a="trip" data-v="'+cur.id+'">'+(S.trips[cur.id]?'✓ Added · tap to remove':'+ Add to my trip')+'</button><div class="credit">Photos from Wikipedia / Wikimedia Commons. Map: @svg-maps/india (CC BY 4.0).</div>'
+   :'<h3>Where would you like to go?</h3><p class="sub">Tap any glowing pin on the map to see photos and what we can arrange there. You can pick more than one place, or skip this step.</p><div class="gal"><div></div><div></div><div></div></div>';
+  h+='<div class="imap"><div>'+svg+'</div><div class="ipanel">'+panel+'</div></div>';
+  h+='<h3 class="g">Or choose from the list</h3><div class="grid">'+opt(!tr.some(function(t){return S.trips[t.id]}),'tripnone','data-v="0"','None, skip this step','I only want my treatment, no sightseeing').replace('class="opt','class="opt none')+tr.map(function(t){return opt(S.trips[t.id],'trip','data-v="'+t.id+'"',t.n,esc(t.s)+'<br>'+t.days+' day'+(t.days>1?'s':'')+' · from '+money(t.p))}).join('')+'</div>';
   h+='<div class="note">Trips happen only after your surgeon confirms it is safe for you to travel. You can also skip this step.</div>';
   return h+foot()},
 function(){ // 7 date & estimate
@@ -119,7 +154,7 @@ function(){ // 7 date & estimate
   h+='<h3 class="g">Your estimate breakdown</h3><table><tr><td>Operation'+(S.rev?' (revision)':'')+' and add-ons</td><td>'+rng(c.mn,c.mx)+'</td></tr><tr><td>Hotel · '+C.rooms[S.room].n+', '+C.occ[S.occ].n.toLowerCase()+', '+c.nights+' nights</td><td>'+money(c.hotel)+'</td></tr>'+(S.tr?'<tr><td>Translator ('+esc(S.lang||'language to confirm')+')</td><td>'+money(c.tr)+'</td></tr>':'')+(c.trip?'<tr><td>Explore India</td><td>'+money(c.trip)+'</td></tr>':'')+'<tr class="tot"><td>Estimated total</td><td>'+rng(c.tmn,c.tmx)+'</td></tr></table>';
   h+='<div class="note">Estimate only. Your exact quote is confirmed after a free assessment.</div>';
   if(S.sent)return h+'<div class="note"><b>Thank you.</b> Your request is ready in WhatsApp. If it did not open, message us on +'+C.wa+'.</div>'+foot();
-  h+='<h3 class="g">Get your detailed quote</h3><div class="row"><div><label class="l">Name</label><input id="qn"></div><div><label class="l">WhatsApp / phone (with country code)</label><input id="qp"></div></div><div class="row" style="margin-top:12px"><div><label class="l">Email</label><input id="qe" type="email"></div><div><label class="l">Country</label><input id="qc"></div></div><div id="qerr" style="color:var(--red);font-size:13px;margin-top:8px"></div><div style="margin-top:14px"><button class="btn f" data-a="send">Send my estimate on WhatsApp</button></div>';
+  h+='<h3 class="g">Get your detailed quote</h3><div class="row"><div><label class="l">Name</label><input id="qn"></div><div><label class="l">WhatsApp / phone (with country code)</label><input id="qp"></div></div><div class="row" style="margin-top:12px"><div><label class="l">Email (optional)</label><input id="qe" type="email"></div><div><label class="l">Country</label><input id="qc"></div></div><div id="qerr" style="color:var(--red);font-size:13px;margin-top:8px"></div><div style="margin-top:14px"><button class="btn f" data-a="send">Send my estimate on WhatsApp</button></div>';
   return h+foot()}
 ];
 function side(){
@@ -131,14 +166,25 @@ function side(){
 function suit(){var el=$('#suit');if(!el)return;if(!bmi()&&!flagged()){el.innerHTML='';return}
   el.innerHTML=flagged()?'<div class="note warn"><b>Needs a closer look.</b> Something here may affect your price, timing or safety. Your surgeon will review it with you before confirming anything.</div>':'<div class="note"><b>Looks suitable.</b> Nothing here should change your price, but your surgeon always confirms suitability before surgery.</div>'}
 function photos(){$$('.photo[data-p]').forEach(function(b){var u=b.getAttribute('data-p');if(!u)return;var im=new Image();im.onload=function(){b.textContent='';b.appendChild(im)};im.src=u})}
-function render(){$('#main').innerHTML=V[S.step]();side();suit();photos();window.scrollTo({top:0,behavior:'smooth'})}
-function rerender(){var y=window.scrollY;$('#main').innerHTML=V[S.step]();side();suit();photos();window.scrollTo(0,y)}
+var PH={};
+function loadPhotos(id){var t=C.trips.filter(function(x){return x.id===id})[0];if(!t)return;
+  function show(){var g=$('#gal');if(!g||S.view!==id||!PH[id])return;var u=PH[id];g.innerHTML=[0,1,2].map(function(i){return '<div>'+(u[i]?'<img alt="'+esc(t.n)+'" src="'+esc(u[i])+'">':'')+'</div>'}).join('')}
+  if(PH[id]){show();return}
+  Promise.all((t.wiki||[]).map(function(w){return fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+w).then(function(r){return r.ok?r.json():null}).then(function(j){return j&&j.thumbnail?j.thumbnail.source.replace(/\/\d+px-/,'/640px-'):null}).catch(function(){return null})}))
+   .then(function(u){PH[id]=u.filter(Boolean);show()})}
+function render(){$('#main').innerHTML=withTop(V[S.step]());side();suit();photos();if(S.step===5&&S.view)loadPhotos(S.view);window.scrollTo({top:0,behavior:'smooth'})}
+function rerender(){var y=window.scrollY;$('#main').innerHTML=withTop(V[S.step]());side();suit();photos();window.scrollTo(0,y)}
 document.addEventListener('click',function(e){
   var t=e.target.closest('[data-a]');if(!t)return;var a=t.getAttribute('data-a'),v=t.getAttribute('data-v');
   if(a==='next'){S.step++;render();return}if(a==='back'){S.step--;render();return}
   if(a==='area'){S.area=v;S.proc=null;S.add={};S.ch={}}
   else if(a==='proc'){S.proc=v;S.add={};S.ch={}}
   else if(a==='add')S.add[v]=!S.add[v];
+  else if(a==='addnone'){GRP[S.proc].items.forEach(function(i){delete S.add[i.i]})}
+  else if(a==='chnone')S.ch[t.getAttribute('data-g')]=null;
+  else if(a==='condnone')S.cond={};
+  else if(a==='tripnone')S.trips={};
+  else if(a==='view'){S.view=v;rerender();loadPhotos(v);return}
   else if(a==='ch'){var g=t.getAttribute('data-g');S.ch[g]=S.ch[g]===v?null:v}
   else if(a==='rev')S.rev=v==='1';
   else if(a==='cond')S.cond[v]=!S.cond[v];
@@ -147,7 +193,7 @@ document.addEventListener('click',function(e){
   else if(a==='occ')S.occ=v;
   else if(a==='ex')S.extra=Math.max(0,Math.min(14,S.extra+(+v)));
   else if(a==='tr')S.tr=v==='1';
-  else if(a==='trip')S.trips[v]=!S.trips[v];
+  else if(a==='trip'){S.trips[v]=!S.trips[v];rerender();loadPhotos(S.view);return}
   else if(a==='send'){send();return}
   rerender();
 });

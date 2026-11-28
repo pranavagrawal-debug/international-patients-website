@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<title>Home wireframe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;color:#222;background:#fff}
+a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
+.img{background:linear-gradient(to top right,transparent calc(50% - 1px),#b0b0b0 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),#b0b0b0 50%,transparent calc(50% + 1px)),#ececec;border:1px solid #b0b0b0;display:flex;align-items:center;justify-content:center;color:#444;font:600 12px/1.2 system-ui;text-align:center;box-sizing:border-box}
+.img span{background:#ececec;padding:2px 8px}
+.bar{height:10px;background:#d2d2d2;border-radius:2px}
+.h{height:22px;background:#8f8f8f;border-radius:2px}
+.btn{border:1.5px solid #444;padding:13px 22px;font:600 13px system-ui;color:#222;display:inline-block;text-align:center}
+.btn.f{background:#444;color:#fff}
+.tag{position:absolute;top:10px;left:14px;font:600 10px system-ui;letter-spacing:.08em;color:#666;text-transform:uppercase}
+.sec{position:relative;padding:60px 64px 56px;border-bottom:1px dashed #aaa}
+.card{border:1px solid #aaa;padding:16px;display:flex;flex-direction:column;gap:10px;background:#fafafa}
+
+/* EDIT HERE: hero background photo. Upload your image to public/assets/hero.jpg (GitHub: Add file > Upload files) and it appears automatically. */
+:root{--hero-image:url('/assets/hero.jpg')}
+.hero{position:relative;min-height:620px;padding:84px 64px 150px;box-sizing:border-box;color:#fff;border-bottom:1px dashed #aaa;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 66%,rgba(0,0,0,.92) 86%),linear-gradient(90deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.18) 50%,rgba(0,0,0,0) 100%),var(--hero-image),linear-gradient(135deg,#6a6a6a,#222);background-size:cover;background-position:center top}
+.hero .tag{color:#ddd}
+.hero .t{background:rgba(255,255,255,.85);border-radius:2px}
+.chip{border:1.5px solid #bbb;padding:10px 14px;font:600 12px system-ui;color:#222;background:#fff;text-align:center;min-width:76px}
+.chip.on{background:#333;color:#fff;border-color:#333}
+
+/* EDIT HERE: TRUE ARTIS brand colours and fonts (colours sampled from trueartis.com; fonts are a close match) */
+:root{--gold:#c59d5f;--brown:#aa6d2b;--bg:#f8f7f4;--ink:#1d1d1b;--red:#b3472d;--serif:'Marcellus',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif}
+body{font-family:var(--sans);color:var(--ink)}
+nav{font-family:var(--sans)!important}
+.btn{font-family:var(--sans);border-color:var(--gold);border-radius:999px}
+.btn.f{background:var(--gold);border-color:var(--gold);color:#fff}
+.chip{font-family:var(--sans)}
+.chip.on{background:var(--gold);border-color:var(--gold)}
+/* Know your doctors */
+.dr-sec{background:var(--bg)}
+.dr-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:16px;flex-wrap:wrap}
+.dr-head h2{font:400 36px var(--serif);margin:0}
+.dr-ctrl{display:flex;gap:12px;align-items:center}
+.dr-all{font:600 13px var(--sans);color:var(--brown);margin-right:8px}
+.dr-arrow{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--gold);background:#fff;color:var(--gold);font-size:20px;line-height:1;cursor:pointer;padding:0}
+.dr-arrow:hover:not(:disabled){background:var(--gold);color:#fff}
+.dr-arrow:disabled{opacity:.35;cursor:default}
+.dr-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 14px;scrollbar-width:none}
+.dr-track::-webkit-scrollbar{display:none}
+.dr-card{flex:0 0 270px;scroll-snap-align:start;background:#fff;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:10px;color:inherit}
+.dr-exp{font-size:12px;color:#555}.dr-exp b{color:var(--brown)}.dr-tags{display:flex;flex-wrap:wrap;gap:5px}.dr-tags span{border:1px solid var(--gold);border-radius:999px;padding:3px 9px;font:600 10.5px var(--sans);background:#fbf4e6}
+.dr-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.12);text-decoration:none}
+.dr-photo{width:100%;aspect-ratio:1/1;border-radius:10px;border:2px solid var(--gold);background:#e9dcc6;overflow:hidden;display:flex;align-items:center;justify-content:center;font:400 54px var(--serif);color:var(--gold)}
+.dr-photo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.dr-name{font:400 20px var(--serif);margin:4px 0 0}
+.dr-deg{font-size:11px;line-height:1.5;color:var(--red);font-weight:500;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.dr-role{font-size:13px;line-height:1.45;color:#444;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dr-link{margin-top:auto;font:600 13px var(--sans);color:var(--brown)}
+
+/* Body map */
+.bm{background:#fff}.bm-grid{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:48px;align-items:center}
+.bm h2{font:400 36px var(--serif);margin:0 0 10px}.bm p{color:#555;max-width:520px;line-height:1.6}
+.bm-fig{background:var(--bg);border-radius:20px;padding:16px;text-align:center}
+.bm-fig{padding:8px}.bm-img{position:relative;max-width:360px;margin:0 auto}.bm-img img{display:block;width:100%;height:auto;border-radius:14px}.bm-hint{margin:6px 0 0;font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--brown)}
+.hs{position:absolute;transform:translate(-50%,-50%);aspect-ratio:1;border-radius:50%;border:2px solid rgba(197,157,95,.9);background:rgba(197,157,95,.12);cursor:pointer;padding:0;animation:hsp 2.2s infinite}
+.hs span{position:absolute;bottom:115%;left:50%;transform:translateX(-50%);white-space:nowrap;background:#1d1d1b;color:#fff;font:600 11px var(--sans);padding:5px 10px;border-radius:8px;opacity:0;pointer-events:none;transition:.15s}
+.hs:hover,.hs:focus-visible,.hs.hot{background:rgba(197,157,95,.55);border-color:var(--brown);animation:none;z-index:3}.hs:hover span,.hs:focus-visible span{opacity:1}
+@keyframes hsp{0%{box-shadow:0 0 0 0 rgba(197,157,95,.55)}70%{box-shadow:0 0 0 12px rgba(197,157,95,0)}100%{box-shadow:0 0 0 0 rgba(197,157,95,0)}}
+.bm-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.bm-chips a{border:1.5px solid var(--gold);border-radius:999px;padding:10px 18px;font:600 13px var(--sans);cursor:pointer;background:#fff}.bm-chips a:hover,.bm-chips a.hot{background:var(--gold);color:#fff;text-decoration:none}
+.zoomfx{position:fixed;inset:0;z-index:9999;pointer-events:none;background:radial-gradient(circle at var(--x) var(--y),#f8f7f4 0,#c59d5f 60%,#aa6d2b 100%);clip-path:circle(0 at var(--x) var(--y));transition:clip-path .75s cubic-bezier(.6,0,.2,1)}
+.zoomfx.go{clip-path:circle(150% at var(--x) var(--y))}
+@media(max-width:800px){.bm-grid{grid-template-columns:1fr}}
+</style>
+<div style="width:100%;max-width:1280px;margin:0 auto;background:#fff">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:72px;border-bottom:1px solid #888">
+<a href="index.html" class="img" style="width:150px;height:40px"><span>LOGO</span></a>
+<nav style="display:flex;gap:28px;font:500 14px system-ui"><a href="treatments.html">Treatments</a><a href="doctors.html">Doctors</a><a href="price-calculator.html">Price calculator</a><a href="plan-your-visit.html">Plan your visit</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav>
+<a href="contact.html" class="btn f">WhatsApp / Send an enquiry</a>
+</div>
+
+<div class="hero">
+<div class="tag">1 · Hero (full-width background photo, text on the left)</div>
+<div class="img" style="position:absolute;top:28px;right:40px;width:84px;height:84px;border-radius:42px;background:rgba(255,255,255,.2);border-color:#ddd;color:#fff"><span style="background:transparent">BADGE</span></div>
+<div style="max-width:520px;display:flex;flex-direction:column;gap:18px">
+<div style="font:600 11px system-ui;letter-spacing:.14em;text-transform:uppercase;color:#eee">Eyebrow: international patient services</div>
+<div style="font:700 56px/1.08 system-ui">Headline goes here, two or three lines</div>
+<div style="font:400 15px/1.6 system-ui;color:#eee">Short supporting paragraph: what you treat, who it is for, and what makes you different. Three or four lines.</div>
+<div style="display:flex;gap:14px;align-items:center;margin-top:6px"><a href="contact.html" class="btn f" style="background:#fff;color:#222;border-color:#fff">Primary button</a><a href="treatments.html" class="btn" style="color:#fff;border-color:#fff">Secondary button</a></div>
+<div style="display:flex;gap:28px;font:600 12px system-ui;color:#eee;margin-top:10px"><div>10,000+ patients</div><div>40+ countries</div><div>15+ years</div></div>
+</div>
+<div style="position:absolute;left:64px;right:auto;bottom:36px;display:flex;background:#fff;border:1px solid #aaa;color:#222;max-width:1000px">
+<div style="background:#333;color:#fff;padding:18px 22px;min-width:170px;display:flex;flex-direction:column;gap:6px;font:700 14px system-ui">Plan your treatment<span style="font:400 11px system-ui;color:#ddd">Step 1 of 3</span></div>
+<div style="padding:14px 18px;display:flex;flex-direction:column;gap:8px"><div style="font:600 9px system-ui;letter-spacing:.12em;color:#555">WHICH TREATMENT</div><div style="display:flex;gap:8px"><div class="chip on">Treatment 1</div><div class="chip">Treatment 2</div><div class="chip">Treatment 3</div><div class="chip">Treatment 4</div><div class="chip">Not sure</div></div></div>
+<a href="contact.html" class="btn f" style="align-self:center;margin:0 18px">Begin my plan →</a>
+</div>
+</div>
+
+<div class="sec dr-sec" style="padding-top:56px;padding-bottom:44px">
+<div class="tag">2 · Know your doctors (scroll sideways, click a doctor to open their page)</div>
+<div class="dr-head">
+<h2>Know your doctors</h2>
+<div class="dr-ctrl"><a class="dr-all" href="doctors.html">See all doctors</a><button class="dr-arrow" id="drPrev" aria-label="Previous doctors">&#8592;</button><button class="dr-arrow" id="drNext" aria-label="Next doctors">&#8594;</button></div>
+</div>
+<div class="dr-track" id="drTrack"></div>
+</div>
+
+<div class="sec bm" id="bm" style="padding-top:56px;padding-bottom:56px"><div class="tag">Price calculator</div><div class="bm-grid"><div class="bm-fig"><div class="bm-img"><img src="/assets/body-map.png" alt="Body map. Tap a glowing circle to choose an area."><button type="button" class="hs" data-area="face" aria-label="Face, eyes, nose & hair" style="left:49.8%;top:6.9%;width:11.5%"><span>Face, eyes, nose & hair</span></button><button type="button" class="hs" data-area="face" aria-label="Face & neck" style="left:49.8%;top:15.2%;width:11.5%"><span>Face & neck</span></button><button type="button" class="hs" data-area="body" aria-label="Shoulders & arms" style="left:35.8%;top:23.6%;width:11.5%"><span>Shoulders & arms</span></button><button type="button" class="hs" data-area="body" aria-label="Shoulders & arms" style="left:63.2%;top:23.6%;width:11.5%"><span>Shoulders & arms</span></button><button type="button" class="hs" data-area="breast" aria-label="Breast & chest" style="left:42.0%;top:28.8%;width:11.5%"><span>Breast & chest</span></button><button type="button" class="hs" data-area="breast" aria-label="Breast & chest" style="left:58.0%;top:28.8%;width:11.5%"><span>Breast & chest</span></button><button type="button" class="hs" data-area="body" aria-label="Abdomen & body contouring" style="left:49.8%;top:36.2%;width:11.5%"><span>Abdomen & body contouring</span></button><button type="button" class="hs" data-area="buttocks" aria-label="Hips & buttocks" style="left:38.0%;top:42.1%;width:11.5%"><span>Hips & buttocks</span></button><button type="button" class="hs" data-area="buttocks" aria-label="Hips & buttocks" style="left:60.8%;top:42.1%;width:11.5%"><span>Hips & buttocks</span></button><button type="button" class="hs" data-area="body" aria-label="Lower abdomen" style="left:49.8%;top:48.3%;width:11.5%"><span>Lower abdomen</span></button><button type="button" class="hs" data-area="buttocks" aria-label="Thighs & legs" style="left:34.8%;top:65.0%;width:11.5%"><span>Thighs & legs</span></button><button type="button" class="hs" data-area="body" aria-label="Inner thighs" style="left:49.8%;top:66.0%;width:11.5%"><span>Inner thighs</span></button><button type="button" class="hs" data-area="buttocks" aria-label="Thighs & legs" style="left:64.8%;top:65.0%;width:11.5%"><span>Thighs & legs</span></button></div><p class="bm-hint">Tap a glowing circle</p></div><div><div class="eyebrow" style="font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--brown)">Price calculator</div><h2>Where would you like to start?</h2><p>Tap the area of the body you are interested in. We will take you straight to the price calculator for that area, where you can pick your procedure, options, stay and more.</p><div class="bm-chips"><a data-area="eyes" href="price-calculator.html?area=eyes">Eyes</a><a data-area="nose" href="price-calculator.html?area=nose">Nose</a><a data-area="face" href="price-calculator.html?area=face">Face & neck</a><a data-area="breast" href="price-calculator.html?area=breast">Breast & chest</a><a data-area="body" href="price-calculator.html?area=body">Body contouring</a><a data-area="buttocks" href="price-calculator.html?area=buttocks">Buttocks, hips & legs</a><a data-area="hair" href="price-calculator.html?area=hair">Hair</a><a data-area="skin" href="price-calculator.html?area=skin">Skin & non-surgical</a></div></div></div></div>
+
+<div class="sec">
+<div class="tag">3 · Treatments grid (links to each treatment page)</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px"><div class="h" style="width:320px;height:28px"></div><div class="bar" style="width:520px"></div></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+<a href="treatment-detail.html" class="card"><div class="img" style="height:150px"><span>TREATMENT PHOTO 4:3</span></div><div class="h" style="width:70%"></div><div class="bar"></div><div class="bar" style="width:75%"></div><div style="font:600 13px system-ui;margin-top:4px">Learn more →</div></a><a href="treatment-detail.html" class="card"><div class="img" style="height:150px"><span>TREATMENT PHOTO 4:3</span></div><div class="h" style="width:70%"></div><div class="bar"></div><div class="bar" style="width:75%"></div><div style="font:600 13px system-ui;margin-top:4px">Learn more →</div></a><a href="treatment-detail.html" class="card"><div class="img" style="height:150px"><span>TREATMENT PHOTO 4:3</span></div><div class="h" style="width:70%"></div><div class="bar"></div><div class="bar" style="width:75%"></div><div style="font:600 13px system-ui;margin-top:4px">Learn more →</div></a><a href="treatment-detail.html" class="card"><div class="img" style="height:150px"><span>TREATMENT PHOTO 4:3</span></div><div class="h" style="width:70%"></div><div class="bar"></div><div class="bar" style="width:75%"></div><div style="font:600 13px system-ui;margin-top:4px">Learn more →</div></a>
+</div></div>
+
+<div class="sec" style="background:#f4f4f4">
+<div class="tag">4 · How it works (5 steps)</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px"><div class="h" style="width:260px;height:28px"></div></div>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px">
+<div style="display:flex;flex-direction:column;gap:10px"><div style="width:44px;height:44px;border-radius:22px;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;font:700 15px system-ui">1</div><div class="h" style="width:80%"></div><div class="bar"></div><div class="bar" style="width:70%"></div></div><div style="display:flex;flex-direction:column;gap:10px"><div style="width:44px;height:44px;border-radius:22px;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;font:700 15px system-ui">2</div><div class="h" style="width:80%"></div><div class="bar"></div><div class="bar" style="width:70%"></div></div><div style="display:flex;flex-direction:column;gap:10px"><div style="width:44px;height:44px;border-radius:22px;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;font:700 15px system-ui">3</div><div class="h" style="width:80%"></div><div class="bar"></div><div class="bar" style="width:70%"></div></div><div style="display:flex;flex-direction:column;gap:10px"><div style="width:44px;height:44px;border-radius:22px;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;font:700 15px system-ui">4</div><div class="h" style="width:80%"></div><div class="bar"></div><div class="bar" style="width:70%"></div></div><div style="display:flex;flex-direction:column;gap:10px"><div style="width:44px;height:44px;border-radius:22px;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;font:700 15px system-ui">5</div><div class="h" style="width:80%"></div><div class="bar"></div><div class="bar" style="width:70%"></div></div>
+</div></div>
+
+<div class="sec">
+<div class="tag">5 · Doctors preview</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:28px"><div class="h" style="width:280px;height:28px"></div><a href="doctors.html" class="btn">All doctors →</a></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+<div class="card" style="flex-direction:row;gap:16px;align-items:center"><div class="img" style="width:96px;height:96px;border-radius:48px;flex:none"><span>PHOTO</span></div><div style="flex:1;display:flex;flex-direction:column;gap:9px"><div class="h" style="width:75%"></div><div class="bar" style="width:55%"></div><div class="bar" style="width:85%"></div></div></div><div class="card" style="flex-direction:row;gap:16px;align-items:center"><div class="img" style="width:96px;height:96px;border-radius:48px;flex:none"><span>PHOTO</span></div><div style="flex:1;display:flex;flex-direction:column;gap:9px"><div class="h" style="width:75%"></div><div class="bar" style="width:55%"></div><div class="bar" style="width:85%"></div></div></div><div class="card" style="flex-direction:row;gap:16px;align-items:center"><div class="img" style="width:96px;height:96px;border-radius:48px;flex:none"><span>PHOTO</span></div><div style="flex:1;display:flex;flex-direction:column;gap:9px"><div class="h" style="width:75%"></div><div class="bar" style="width:55%"></div><div class="bar" style="width:85%"></div></div></div>
+</div></div>
+
+<div class="sec" style="background:#f4f4f4">
+<div class="tag">6 · Patient stories (optional)</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+<div class="card"><div class="bar"></div><div class="bar"></div><div class="bar" style="width:70%"></div><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="img" style="width:40px;height:40px;border-radius:20px;flex:none"></div><div class="bar" style="width:100px"></div></div></div><div class="card"><div class="bar"></div><div class="bar"></div><div class="bar" style="width:70%"></div><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="img" style="width:40px;height:40px;border-radius:20px;flex:none"></div><div class="bar" style="width:100px"></div></div></div><div class="card"><div class="bar"></div><div class="bar"></div><div class="bar" style="width:70%"></div><div style="display:flex;gap:10px;align-items:center;margin-top:8px"><div class="img" style="width:40px;height:40px;border-radius:20px;flex:none"></div><div class="bar" style="width:100px"></div></div></div>
+</div></div>
+
+<div class="sec" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;background:#e6e6e6">
+<div class="tag">7 · Closing call to action</div>
+<div class="h" style="width:420px;height:30px"></div><div class="bar" style="width:520px"></div>
+<div style="display:flex;gap:12px;margin-top:8px"><a href="contact.html" class="btn f">Send an enquiry</a><a href="contact.html" class="btn">WhatsApp us</a></div>
+</div>
+
+<div style="padding:48px 64px 32px;background:#d9d9d9;position:relative">
+<div class="tag" style="top:10px">8 · Footer</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px">
+<div style="display:flex;flex-direction:column;gap:10px"><div class="img" style="width:150px;height:40px"><span>LOGO</span></div><div class="bar"></div><div class="bar" style="width:70%"></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:120px"></div><div class="bar" style="width:50%"></div><div class="bar" style="width:55%"></div><div class="bar" style="width:45%"></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="h" style="width:120px"></div><div class="bar" style="width:70%"></div><div class="bar" style="width:60%"></div><div class="bar" style="width:65%"></div></div>
+</div>
+<div class="bar" style="margin-top:36px;width:80%"></div>
+</div>
+</div>
+<script src="/assets/doctors.js"></script>
+<script>
+(function(){
+  var t=document.getElementById('drTrack'),L=document.getElementById('drPrev'),R=document.getElementById('drNext');
+  if(!t||!window.DOCTORS)return;
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  t.innerHTML=window.DOCTORS.map(function(d,i){
+    var ini=d.name.replace('Dr. ','').split(' ').map(function(w){return w[0]}).join('');
+    return '<a class="dr-card" href="doctor-detail.html?d='+encodeURIComponent(d.slug)+'">'
+     +'<div class="dr-photo" data-i="'+i+'">'+ini+'</div>'
+     +'<h3 class="dr-name">'+esc(d.name)+'</h3>'
+     +'<div class="dr-deg">'+esc(d.degrees)+'</div>'
+     +'<div class="dr-role">'+esc(d.role)+'</div>'
+     +'<div class="dr-exp"><b>'+esc(d.exp||'')+'</b> experience'+(d.cases?' · <b>'+esc(d.cases)+'</b> cases':'')+'</div>'
+     +'<div class="dr-tags">'+(d.special||[]).slice(0,4).map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div>'
+     +'<span class="dr-link">View profile &rarr;</span></a>';
+  }).join('');
+  Array.prototype.forEach.call(t.querySelectorAll('.dr-photo'),function(box){
+    var d=window.DOCTORS[+box.getAttribute('data-i')];
+    if(!d.photo)return;
+    var img=new Image();img.alt=d.name;
+    img.onload=function(){box.textContent='';box.appendChild(img)};
+    img.src=d.photo;
+  });
+  function upd(){L.disabled=t.scrollLeft<=2;R.disabled=t.scrollLeft+t.clientWidth>=t.scrollWidth-2}
+  L.onclick=function(){t.scrollBy({left:-t.clientWidth*0.8})};
+  R.onclick=function(){t.scrollBy({left:t.clientWidth*0.8})};
+  t.addEventListener('scroll',upd);window.addEventListener('resize',upd);upd();
+})();
+</script>
+<script>
+(function(){
+  var bm=document.getElementById('bm');if(!bm)return;
+  [].forEach.call(bm.querySelectorAll('.bm-tog span'),function(t){t.onclick=function(){
+    [].forEach.call(bm.querySelectorAll('.bm-tog span'),function(x){x.classList.remove('on')});t.classList.add('on');bm.classList.toggle('rear',t.getAttribute('data-s')==='rear')}});
+  function go(area,x,y){
+    var url='price-calculator.html?area='+area+'&from=map';
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){location.href=url;return}
+    var fx=document.createElement('div');fx.className='zoomfx';fx.style.setProperty('--x',x+'px');fx.style.setProperty('--y',y+'px');document.documentElement.appendChild(fx);
+    document.body.style.transition='transform .75s cubic-bezier(.6,0,.2,1),opacity .75s';document.body.style.transformOrigin=x+'px '+(y+window.scrollY)+'px';
+    requestAnimationFrame(function(){fx.classList.add('go');document.body.style.transform='scale(2.4)';document.body.style.opacity='0'});
+    setTimeout(function(){location.href=url},720);
+  }
+  [].forEach.call(bm.querySelectorAll('.hs'),function(h){
+    h.addEventListener('click',function(e){go(h.getAttribute('data-area'),e.clientX,e.clientY)});
+    h.addEventListener('mouseenter',function(){var a=h.getAttribute('data-area');[].forEach.call(bm.querySelectorAll('.bm-chips a'),function(c){c.classList.toggle('hot',c.getAttribute('data-area')===a)})});
+    h.addEventListener('mouseleave',function(){[].forEach.call(bm.querySelectorAll('.bm-chips a'),function(c){c.classList.remove('hot')})});
+  });
+  [].forEach.call(bm.querySelectorAll('.bm-chips a'),function(c){c.addEventListener('click',function(e){e.preventDefault();go(c.getAttribute('data-area'),e.clientX,e.clientY)})});
+  window.addEventListener('pageshow',function(){document.body.style.transform='';document.body.style.opacity='';var z=document.querySelector('.zoomfx');if(z)z.remove()});
+})();
+</script>
+</body>
+</html>

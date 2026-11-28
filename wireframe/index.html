@@ -27,7 +27,7 @@ a{color:#222;text-decoration:none}a:hover{text-decoration:underline}
 .hero{position:relative;min-height:620px;padding:84px 64px 150px;box-sizing:border-box;color:#fff;border-bottom:1px dashed #aaa;background:#222;overflow:hidden}
 .hero-slides,.hero-shade{position:absolute;inset:0}.hero-slides{z-index:0}
 .hero-shade{z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 66%,rgba(0,0,0,.92) 86%),linear-gradient(90deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.18) 50%,rgba(0,0,0,0) 100%)}
-.hs-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease}.hs-slide.on{opacity:1}
+.hs-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .6s ease}.hs-slide.on{opacity:1}
 .hs-arrow{position:absolute;z-index:3;top:46%;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.8);background:rgba(0,0,0,.35);color:#fff;font-size:22px;line-height:1;cursor:pointer;padding:0}.hs-arrow:hover{background:var(--gold);border-color:var(--gold)}
 .hs-prev{left:20px}.hs-next{right:20px}
 .hs-dots{position:absolute;z-index:3;right:64px;bottom:44px;display:flex;gap:8px}.hs-dots button{width:10px;height:10px;border-radius:50%;border:1.5px solid #fff;background:transparent;padding:0;cursor:pointer}.hs-dots button.on{background:var(--gold);border-color:var(--gold);width:26px;border-radius:6px}
@@ -194,7 +194,7 @@ nav{font-family:var(--sans)!important}
 (function(){
   /* EDIT HERE: hero photos in order. First one is shown first. Upload new photos to public/assets and add them here. */
   var PHOTOS=['/assets/hero.jpg','/assets/hero-2.jpg','/assets/hero-3.jpg','/assets/hero-4.jpg','/assets/hero-5.jpg'];
-  var SECONDS=5;
+  var SECONDS=3;
   var box=document.getElementById('heroSlides'),dots=document.getElementById('hsDots');if(!box)return;
   var cur=0,timer=null,slides=[],ds=[];
   PHOTOS.forEach(function(u,i){
@@ -203,11 +203,10 @@ nav{font-family:var(--sans)!important}
     if(i>0){var im=new Image();im.src=u}
   });
   function go(n,manual){slides[cur].classList.remove('on');ds[cur].classList.remove('on');cur=(n+slides.length)%slides.length;slides[cur].classList.add('on');ds[cur].classList.add('on');if(manual)restart()}
-  function restart(){clearInterval(timer);if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;timer=setInterval(function(){go(cur+1)},SECONDS*1000)}
+  function restart(){clearInterval(timer);timer=setInterval(function(){go(cur+1)},SECONDS*1000)}
   document.getElementById('hsNext').onclick=function(){go(cur+1,true)};
   document.getElementById('hsPrev').onclick=function(){go(cur-1,true)};
-  var hero=document.querySelector('.hero');hero.addEventListener('mouseenter',function(){clearInterval(timer)});hero.addEventListener('mouseleave',restart);
-  restart();
+    restart();
 })();
 </script>
 <script>

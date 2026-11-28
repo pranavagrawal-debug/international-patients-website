@@ -57,11 +57,25 @@ nav{font-family:var(--sans)!important}
 .dr-deg{font-size:11px;line-height:1.5;color:var(--red);font-weight:500;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .dr-role{font-size:13px;line-height:1.45;color:#444;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .dr-link{margin-top:auto;font:600 13px var(--sans);color:var(--brown)}
+
+/* Body map */
+.bm{background:#fff}.bm-grid{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:48px;align-items:center}
+.bm h2{font:400 36px var(--serif);margin:0 0 10px}.bm p{color:#555;max-width:520px;line-height:1.6}
+.bm-fig{background:var(--bg);border-radius:20px;padding:16px;text-align:center}
+.bm-tog{display:inline-flex;gap:6px;margin-bottom:8px}.bm-tog span{padding:7px 18px;border-radius:999px;border:1.5px solid var(--gold);font:600 12px var(--sans);cursor:pointer}.bm-tog span.on{background:var(--gold);color:#fff}
+.bm svg{width:100%;max-width:300px;height:auto}.body{fill:#e9dcc6}
+.hs{fill:var(--gold);fill-opacity:.35;stroke:var(--gold);stroke-width:2;cursor:pointer;transition:.2s;transform-box:fill-box;transform-origin:center}
+.hs:hover,.hs.hot{fill-opacity:.9;transform:scale(1.35)}.hs.pulse{animation:pl 2s infinite}@keyframes pl{50%{fill-opacity:.7}}
+.bm [data-side=rear]{display:none}.bm.rear [data-side=front]{display:none}.bm.rear [data-side=rear]{display:inline}
+.bm-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.bm-chips a{border:1.5px solid var(--gold);border-radius:999px;padding:10px 18px;font:600 13px var(--sans);cursor:pointer;background:#fff}.bm-chips a:hover,.bm-chips a.hot{background:var(--gold);color:#fff;text-decoration:none}
+.zoomfx{position:fixed;inset:0;z-index:9999;pointer-events:none;background:radial-gradient(circle at var(--x) var(--y),#f8f7f4 0,#c59d5f 60%,#aa6d2b 100%);clip-path:circle(0 at var(--x) var(--y));transition:clip-path .75s cubic-bezier(.6,0,.2,1)}
+.zoomfx.go{clip-path:circle(150% at var(--x) var(--y))}
+@media(max-width:800px){.bm-grid{grid-template-columns:1fr}}
 </style>
 <div style="width:100%;max-width:1280px;margin:0 auto;background:#fff">
 <div style="display:flex;align-items:center;justify-content:space-between;padding:0 64px;height:72px;border-bottom:1px solid #888">
 <a href="index.html" class="img" style="width:150px;height:40px"><span>LOGO</span></a>
-<nav style="display:flex;gap:28px;font:500 14px system-ui"><a href="treatments.html">Treatments</a><a href="doctors.html">Doctors</a><a href="plan-your-visit.html">Plan your visit</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav>
+<nav style="display:flex;gap:28px;font:500 14px system-ui"><a href="treatments.html">Treatments</a><a href="doctors.html">Doctors</a><a href="price-calculator.html">Price calculator</a><a href="plan-your-visit.html">Plan your visit</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav>
 <a href="contact.html" class="btn f">WhatsApp / Send an enquiry</a>
 </div>
 
@@ -90,6 +104,8 @@ nav{font-family:var(--sans)!important}
 </div>
 <div class="dr-track" id="drTrack"></div>
 </div>
+
+<div class="sec bm" id="bm" style="padding-top:56px;padding-bottom:56px"><div class="tag">Body map (click an area to open the price calculator)</div><div class="bm-grid"><div class="bm-fig"><div class="bm-tog"><span class="on" data-s="front">Front</span><span data-s="rear">Rear</span></div><svg viewBox="0 0 300 600" aria-label="Body map"><g class="body"><ellipse cx="150" cy="46" rx="30" ry="38"/><rect x="138" y="80" width="24" height="30"/><path d="M104 112Q150 98 196 112L206 210Q190 270 186 318L114 318Q110 270 94 210Z"/><path d="M104 118L62 212L48 320" fill="none" stroke="#e9dcc6" stroke-width="22" stroke-linecap="round"/><path d="M196 118L238 212L252 320" fill="none" stroke="#e9dcc6" stroke-width="22" stroke-linecap="round"/><path d="M128 316L122 470L120 585" fill="none" stroke="#e9dcc6" stroke-width="40" stroke-linecap="round"/><path d="M172 316L178 470L180 585" fill="none" stroke="#e9dcc6" stroke-width="40" stroke-linecap="round"/></g><circle class="hs pulse" data-area="hair" data-side="front" cx="150" cy="14" r="9"><title>Hair</title></circle><circle class="hs pulse" data-area="eyes" data-side="front" cx="150" cy="42" r="9"><title>Eyes</title></circle><circle class="hs pulse" data-area="nose" data-side="front" cx="150" cy="62" r="8"><title>Nose</title></circle><circle class="hs pulse" data-area="face" data-side="front" cx="150" cy="92" r="9"><title>Face & neck</title></circle><circle class="hs pulse" data-area="breast" data-side="front" cx="150" cy="160" r="16"><title>Breast & chest</title></circle><circle class="hs pulse" data-area="body" data-side="front" cx="150" cy="245" r="16"><title>Abdomen & body contouring</title></circle><circle class="hs pulse" data-area="body" data-side="front" cx="57" cy="235" r="11"><title>Arms</title></circle><circle class="hs pulse" data-area="body" data-side="front" cx="243" cy="235" r="11"><title>Arms</title></circle><circle class="hs pulse" data-area="body" data-side="front" cx="128" cy="370" r="14"><title>Thighs</title></circle><circle class="hs pulse" data-area="body" data-side="front" cx="172" cy="370" r="14"><title>Thighs</title></circle><circle class="hs pulse" data-area="hair" data-side="rear" cx="150" cy="14" r="9"><title>Hair</title></circle><circle class="hs pulse" data-area="body" data-side="rear" cx="150" cy="180" r="16"><title>Back</title></circle><circle class="hs pulse" data-area="buttocks" data-side="rear" cx="130" cy="300" r="16"><title>Buttocks & hips</title></circle><circle class="hs pulse" data-area="buttocks" data-side="rear" cx="170" cy="300" r="16"><title>Buttocks & hips</title></circle><circle class="hs pulse" data-area="buttocks" data-side="rear" cx="128" cy="500" r="12"><title>Calves</title></circle><circle class="hs pulse" data-area="buttocks" data-side="rear" cx="172" cy="500" r="12"><title>Calves</title></circle></svg></div><div><div class="eyebrow" style="font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--brown)">Price calculator</div><h2>Where would you like to start?</h2><p>Tap the area of the body you are interested in. We will take you straight to the price calculator for that area, where you can pick your procedure, options, stay and more.</p><div class="bm-chips"><a data-area="eyes" href="price-calculator.html?area=eyes">Eyes</a><a data-area="nose" href="price-calculator.html?area=nose">Nose</a><a data-area="face" href="price-calculator.html?area=face">Face & neck</a><a data-area="breast" href="price-calculator.html?area=breast">Breast & chest</a><a data-area="body" href="price-calculator.html?area=body">Body contouring</a><a data-area="buttocks" href="price-calculator.html?area=buttocks">Buttocks, hips & legs</a><a data-area="hair" href="price-calculator.html?area=hair">Hair</a><a data-area="skin" href="price-calculator.html?area=skin">Skin & non-surgical</a></div></div></div></div>
 
 <div class="sec">
 <div class="tag">3 · Treatments grid (links to each treatment page)</div>
@@ -160,6 +176,28 @@ nav{font-family:var(--sans)!important}
   L.onclick=function(){t.scrollBy({left:-t.clientWidth*0.8})};
   R.onclick=function(){t.scrollBy({left:t.clientWidth*0.8})};
   t.addEventListener('scroll',upd);window.addEventListener('resize',upd);upd();
+})();
+</script>
+<script>
+(function(){
+  var bm=document.getElementById('bm');if(!bm)return;
+  [].forEach.call(bm.querySelectorAll('.bm-tog span'),function(t){t.onclick=function(){
+    [].forEach.call(bm.querySelectorAll('.bm-tog span'),function(x){x.classList.remove('on')});t.classList.add('on');bm.classList.toggle('rear',t.getAttribute('data-s')==='rear')}});
+  function go(area,x,y){
+    var url='price-calculator.html?area='+area+'&from=map';
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){location.href=url;return}
+    var fx=document.createElement('div');fx.className='zoomfx';fx.style.setProperty('--x',x+'px');fx.style.setProperty('--y',y+'px');document.documentElement.appendChild(fx);
+    document.body.style.transition='transform .75s cubic-bezier(.6,0,.2,1),opacity .75s';document.body.style.transformOrigin=x+'px '+(y+window.scrollY)+'px';
+    requestAnimationFrame(function(){fx.classList.add('go');document.body.style.transform='scale(2.4)';document.body.style.opacity='0'});
+    setTimeout(function(){location.href=url},720);
+  }
+  [].forEach.call(bm.querySelectorAll('.hs'),function(h){
+    h.addEventListener('click',function(e){go(h.getAttribute('data-area'),e.clientX,e.clientY)});
+    h.addEventListener('mouseenter',function(){var a=h.getAttribute('data-area');[].forEach.call(bm.querySelectorAll('.bm-chips a'),function(c){c.classList.toggle('hot',c.getAttribute('data-area')===a)})});
+    h.addEventListener('mouseleave',function(){[].forEach.call(bm.querySelectorAll('.bm-chips a'),function(c){c.classList.remove('hot')})});
+  });
+  [].forEach.call(bm.querySelectorAll('.bm-chips a'),function(c){c.addEventListener('click',function(e){e.preventDefault();go(c.getAttribute('data-area'),e.clientX,e.clientY)})});
+  window.addEventListener('pageshow',function(){document.body.style.transform='';document.body.style.opacity='';var z=document.querySelector('.zoomfx');if(z)z.remove()});
 })();
 </script>
 </body>

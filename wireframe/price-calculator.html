@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Price calculator | TRUE ARTIS</title>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c59d5f;--brown:#aa6d2b;--bg:#f8f7f4;--ink:#1d1d1b;--red:#b3472d;--dark:#1d1d1b;--serif:'Marcellus',Georgia,serif;--sans:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg)}a{color:inherit;text-decoration:none}
+.top{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:#fff;border-bottom:1px solid #e6e1d8;gap:16px}
+.top nav{display:flex;gap:24px;font:500 14px var(--sans)}.logo{font:400 22px var(--serif);letter-spacing:.06em}
+.btn{display:inline-block;padding:13px 26px;border:1.5px solid var(--gold);border-radius:999px;font:600 13px var(--sans);background:#fff;cursor:pointer;color:var(--ink)}
+.btn.f{background:var(--gold);color:#fff}.btn:disabled{opacity:.4;cursor:not-allowed}
+.sample{background:#fff4d6;color:#7a5a00;font-size:12px;text-align:center;padding:7px}
+.shell{max-width:1240px;margin:28px auto;padding:0 24px;display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
+.zin .shell{animation:zin .75s cubic-bezier(.2,.8,.2,1)}@keyframes zin{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+.card{background:#fff;border-radius:22px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.bar{display:flex;gap:6px;margin-bottom:22px}.bar i{flex:1;height:5px;border-radius:3px;background:#ece7dd}.bar i.on{background:var(--gold)}
+.eyebrow{font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--brown)}
+h1{font:400 38px/1.15 var(--serif);margin:6px 0 6px}.sub{color:#666;margin:0 0 22px;font-size:15px}
+h3.g{font:400 20px var(--serif);margin:24px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.chip{border:1.5px solid #e2dccf;background:#fff;border-radius:999px;padding:9px 16px;font:500 13px var(--sans);cursor:pointer}
+.chip.on{background:var(--gold);border-color:var(--gold);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.opt{border:1.5px solid #e6e1d8;border-radius:14px;padding:14px 16px;cursor:pointer;background:#fff;position:relative;display:block}
+.opt:hover{border-color:var(--gold)}.opt.on{border-color:var(--gold);background:#fbf4e6}
+.opt.on:after{content:"✓";position:absolute;right:10px;top:8px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;font-size:13px;text-align:center;line-height:22px}
+.opt b{display:block;font-weight:600;font-size:14px;margin-bottom:4px;padding-right:22px}.opt small{color:#777;font-size:12px;line-height:1.4;display:block}
+.photo{aspect-ratio:1;border-radius:10px;border:2px solid var(--gold);background:#e9dcc6;margin-bottom:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;font:400 40px var(--serif);color:var(--gold)}.photo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.row{display:flex;gap:14px;flex-wrap:wrap}.row>div{flex:1;min-width:140px}
+label.l{display:block;font:600 12px var(--sans);margin:0 0 6px}
+input,select{width:100%;padding:12px 14px;border:1.5px solid #e2dccf;border-radius:12px;font:400 14px var(--sans);background:#fff}
+.note{border-left:3px solid var(--gold);background:#fbf4e6;border-radius:10px;padding:12px 16px;font-size:13px;line-height:1.55;margin:16px 0}
+.note.warn{border-color:var(--red);background:#fdeeea}
+.nav{display:flex;justify-content:space-between;margin-top:30px}
+.side{background:var(--dark);color:#fff;border-radius:22px;padding:26px;position:sticky;top:16px}
+.side h4{margin:0;font:400 20px var(--serif)}.price{font:400 32px/1.2 var(--serif);color:var(--gold);margin:8px 0 4px}
+.side small{color:#bbb;font-size:12px}.side .r{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #3a3a37;font-size:13px}
+.side .r span:first-child{color:#bbb}.side .r span:last-child{text-align:right;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:14px}td{padding:10px 0;border-bottom:1px solid #eee}td:last-child{text-align:right;font-weight:600}
+.tot td{border:0;font-size:16px;color:var(--brown)}
+@media(max-width:900px){.shell{grid-template-columns:1fr}.side{position:static}.top nav{display:none}.top{padding:0 20px}h1{font-size:30px}}
+</style></head><body>
+<div class="top"><a href="index.html" class="logo">TRUE ARTIS</a>
+<nav><a href="treatments.html">Treatments</a><a href="doctors.html">Doctors</a><a href="price-calculator.html"><b>Price calculator</b></a><a href="plan-your-visit.html">Plan your visit</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav>
+<a href="contact.html" class="btn f">WhatsApp / Send an enquiry</a></div>
+<div class="sample" id="sample" hidden>Sample prices for design only. Real True Artis prices will replace these before launch.</div>
+<div class="shell"><div class="card" id="main"></div><aside class="side" id="side"></aside></div>
+<script src="/assets/calculator-data.js"></script><script src="/assets/doctors.js"></script>
+<script>
+(function(){
+var C=window.CALC,D=window.DOCTORS||[],Q=new URLSearchParams(location.search);
+var STEPS=['Operation','Options','About you','Surgeon','Stay & services','Explore India','Date & estimate'];
+var ITEM={},GRP={},AREA={};
+C.areas.forEach(function(a){AREA[a.id]=a;a.groups.forEach(function(g,gi){g.id=a.id+gi;g.items.forEach(function(i){ITEM[i.i]=i;GRP[i.i]=g})})});
+var S={step:0,area:AREA[Q.get('area')]?Q.get('area'):'eyes',proc:null,add:{},ch:{},rev:false,h:'',w:'',cond:{},doc:'',room:'standard',occ:'single',extra:0,tr:false,lang:'',trips:{},date:'',flex:false,sent:false};
+var $=function(s){return document.querySelector(s)};
+var $$=function(s){return [].slice.call(document.querySelectorAll(s))};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function money(n){return C.cur+Math.round(n).toLocaleString('en-US')}
+function rng(a,b){return a===b?money(a):money(a)+' – '+money(b)}
+function calc(){
+  var p=ITEM[S.proc];if(!p)return null;
+  var mn=p.a,mx=p.b,days=p.d,n=0;
+  GRP[p.i].items.forEach(function(i){if(i.t==='A'&&S.add[i.i]){mn+=i.a;mx+=i.b;days=Math.max(days,i.d);n++}
+    if(i.t==='C'&&S.ch[i.i]!=null)days=Math.max(days,i.d);if(i.t==='N'&&S.add[i.i])n++});
+  var f=(S.rev&&!/revision|secondary/i.test(p.n)?1.4:1)*(C.docFactor[S.doc]||1);mn*=f;mx*=f;
+  var nights=days+S.extra,hotel=nights*C.rooms[S.room].rate*C.occ[S.occ].m,tr=S.tr?(nights+1)*C.transRate:0,trip=0;
+  C.trips.forEach(function(t){if(S.trips[t.id])trip+=t.p});
+  var x=hotel+tr+trip;return{p:p,mn:mn,mx:mx,days:days,nights:nights,hotel:hotel,tr:tr,trip:trip,n:n,tmn:mn+x,tmx:mx+x};
+}
+function bmi(){var h=+S.h/100,w=+S.w;return h>0&&w>0?w/(h*h):0}
+function flagged(){var b=bmi();return Object.keys(S.cond).some(function(k){return S.cond[k]})||(b&&(b>=35||b<17))}
+var CONDS=['Heart or circulation condition','Uncontrolled diabetes','Blood-thinning medication','Bleeding disorder','Pregnant or breastfeeding','Smoker'];
+function opt(on,act,data,t,s){return '<div class="opt'+(on?' on':'')+'" data-a="'+act+'" '+data+'><b>'+t+'</b>'+(s?'<small>'+s+'</small>':'')+'</div>'}
+function head(t,s){return '<div class="bar">'+STEPS.map(function(_,i){return '<i class="'+(i<=S.step?'on':'')+'"></i>'}).join('')+'</div><div class="eyebrow">Step '+(S.step+1)+' of '+STEPS.length+'</div><h1>'+t+'</h1><p class="sub">'+s+'</p>'}
+function foot(ok){return '<div class="nav"><button class="btn" data-a="back"'+(S.step?'':' style="visibility:hidden"')+'>← Back</button>'+(S.step<6?'<button class="btn f" data-a="next"'+(ok===false?' disabled':'')+'>Continue →</button>':'')+'</div>'}
+var V=[
+function(){ // 1 operation
+  var a=AREA[S.area];
+  var h=head('Your operation','Pick the area, then the procedure you are considering. The length of your stay is set from it.');
+  h+='<div class="chips">'+C.areas.map(function(x){return '<span class="chip'+(x.id===S.area?' on':'')+'" data-a="area" data-v="'+x.id+'">'+esc(x.name)+'</span>'}).join('')+'</div>';
+  a.groups.forEach(function(g){var ps=g.items.filter(function(i){return i.t==='P'});if(!ps.length)return;
+    h+='<h3 class="g">'+esc(g.n)+'</h3><div class="grid">'+ps.map(function(i){return opt(S.proc===i.i,'proc','data-v="'+i.i+'"',esc(i.n),'from '+money(i.a)+(i.d?' · '+i.d+'-day stay':' · no stay needed'))}).join('')+'</div>'});
+  return h+foot(!!S.proc)},
+function(){ // 2 options
+  var p=ITEM[S.proc],g=GRP[S.proc],h=head('Options & add-ons','Customise <b>'+esc(p.n)+'</b>. Everything here is optional.'),any=false;
+  g.items.forEach(function(i){if(i.t==='C'){any=true;h+='<h3 class="g">'+esc(i.n)+'</h3><div class="chips">'+i.o.map(function(o){return '<span class="chip'+(S.ch[i.i]===o?' on':'')+'" data-a="ch" data-g="'+i.i+'" data-v="'+esc(o)+'">'+esc(o.charAt(0).toUpperCase()+o.slice(1))+'</span>'}).join('')+'</div>'}});
+  var ad=g.items.filter(function(i){return i.t==='A'||i.t==='N'});
+  if(ad.length){any=true;h+='<h3 class="g">Add-ons</h3><div class="grid">'+ad.map(function(i){return opt(S.add[i.i],'add','data-v="'+i.i+'"',esc(i.n),i.t==='A'?'+ '+rng(i.a,i.b)+(i.d>p.d?' · longer stay':''):'No extra charge · discussed with your surgeon')}).join('')+'</div>'}
+  if(!any)h+='<div class="note">No extra options for this procedure. Continue to the next step.</div>';
+  return h+foot()},
+function(){ // 3 about you
+  var h=head('About you','Revision surgery is more complex, so it costs more. A few health questions can also change your price, or whether surgery is safe right now.');
+  h+='<div class="grid" style="max-width:480px">'+opt(!S.rev,'rev','data-v="0"','Primary','First-time procedure')+opt(S.rev,'rev','data-v="1"','Secondary / revision','Correcting earlier surgery · +40%')+'</div>';
+  h+='<h3 class="g">Health &amp; suitability</h3><div class="row"><div><label class="l">Height (cm)</label><input id="h" type="number" placeholder="170" value="'+esc(S.h)+'"></div><div><label class="l">Weight (kg)</label><input id="w" type="number" placeholder="70" value="'+esc(S.w)+'"></div><div><label class="l">Your BMI</label><div id="bmi" style="padding:12px 0;font-weight:600">'+(bmi()?bmi().toFixed(1):'–')+'</div></div></div>';
+  h+='<h3 class="g" style="font-size:15px;font-family:var(--sans)">Do any of these apply to you?</h3><div class="chips">'+CONDS.map(function(c){return '<span class="chip'+(S.cond[c]?' on':'')+'" data-a="cond" data-v="'+c+'">'+c+'</span>'}).join('')+'</div><div id="suit"></div>';
+  return h+foot()},
+function(){ // 4 surgeon
+  var h=head('Choose your surgeon','Pick a surgeon, or let us match you on results, communication and character.');
+  h+='<div class="grid">'+D.map(function(d){var ini=d.name.replace('Dr. ','').split(' ').map(function(w){return w[0]}).join('');
+    return '<div class="opt'+(S.doc===d.slug?' on':'')+'" data-a="doc" data-v="'+d.slug+'"><div class="photo" data-p="'+esc(d.photo||'')+'">'+ini+'</div><b>'+esc(d.name)+'</b><small>'+esc(d.role)+'</small></div>'}).join('')+opt(S.doc==='help','doc','data-v="help"','Help me choose','We will match you on results, communication and character')+'</div>';
+  return h+foot()},
+function(){ // 5 stay
+  var c=calc(),h=head('Stay & services','Hotel room, language support and extra nights. Nights are set from your operation.');
+  h+='<h3 class="g">Room type</h3><div class="grid">'+Object.keys(C.rooms).map(function(k){return opt(S.room===k,'room','data-v="'+k+'"',C.rooms[k].n,'from '+money(C.rooms[k].rate)+'/night')}).join('')+'</div>';
+  h+='<h3 class="g">Occupancy</h3><div class="chips">'+Object.keys(C.occ).map(function(k){var off=k==='triple'&&S.room!=='suite';return '<span class="chip'+(S.occ===k?' on':'')+'" data-a="occ" data-v="'+k+'"'+(off?' style="opacity:.4;pointer-events:none"':'')+'>'+C.occ[k].n+'</span>'}).join('')+'</div>';
+  h+='<div class="note">Recommended stay: <b>'+c.days+' night'+(c.days===1?'':'s')+'</b>, set automatically for safe recovery. Extra nights: <span class="chip" data-a="ex" data-v="-1">−</span> <b>'+S.extra+'</b> <span class="chip" data-a="ex" data-v="1">+</span></div>';
+  h+='<h3 class="g">Translator</h3><div class="chips"><span class="chip'+(!S.tr?' on':'')+'" data-a="tr" data-v="0">No, I speak English</span><span class="chip'+(S.tr?' on':'')+'" data-a="tr" data-v="1">Yes, I need a translator</span></div>';
+  if(S.tr)h+='<div style="max-width:320px;margin-top:12px"><label class="l">Which language?</label><select id="lang"><option value="">Choose a language</option>'+C.langs.map(function(l){return '<option'+(S.lang===l?' selected':'')+'>'+l+'</option>'}).join('')+'</select></div>';
+  return h+foot()},
+function(){ // 6 explore
+  var h=head('Explore India with us','Optional. After your surgeon clears you to travel, we arrange the trip. Prices are per person.');
+  h+='<div class="grid">'+C.trips.map(function(t){return opt(S.trips[t.id],'trip','data-v="'+t.id+'"',t.n,esc(t.s)+'<br>'+t.days+' day'+(t.days>1?'s':'')+' · from '+money(t.p))}).join('')+'</div>';
+  h+='<div class="note">Trips happen only after your surgeon confirms it is safe for you to travel. You can also skip this step.</div>';
+  return h+foot()},
+function(){ // 7 date & estimate
+  var c=calc(),h=head('Your date & estimate','Choose a preferred surgery date and see your estimate.');
+  h+='<div class="row" style="max-width:520px"><div><label class="l">Preferred surgery date</label><input id="date" type="date" value="'+esc(S.date)+'"></div><div style="display:flex;align-items:flex-end"><label style="font-size:13px"><input id="flex" type="checkbox" style="width:auto;margin-right:6px"'+(S.flex?' checked':'')+'>My dates are flexible</label></div></div>';
+  h+='<h3 class="g">Your estimate breakdown</h3><table><tr><td>Operation'+(S.rev?' (revision)':'')+' and add-ons</td><td>'+rng(c.mn,c.mx)+'</td></tr><tr><td>Hotel · '+C.rooms[S.room].n+', '+C.occ[S.occ].n.toLowerCase()+', '+c.nights+' nights</td><td>'+money(c.hotel)+'</td></tr>'+(S.tr?'<tr><td>Translator ('+esc(S.lang||'language to confirm')+')</td><td>'+money(c.tr)+'</td></tr>':'')+(c.trip?'<tr><td>Explore India</td><td>'+money(c.trip)+'</td></tr>':'')+'<tr class="tot"><td>Estimated total</td><td>'+rng(c.tmn,c.tmx)+'</td></tr></table>';
+  h+='<div class="note">Estimate only. Your exact quote is confirmed after a free assessment.</div>';
+  if(S.sent)return h+'<div class="note"><b>Thank you.</b> Your request is ready in WhatsApp. If it did not open, message us on +'+C.wa+'.</div>'+foot();
+  h+='<h3 class="g">Get your detailed quote</h3><div class="row"><div><label class="l">Name</label><input id="qn"></div><div><label class="l">WhatsApp / phone (with country code)</label><input id="qp"></div></div><div class="row" style="margin-top:12px"><div><label class="l">Email</label><input id="qe" type="email"></div><div><label class="l">Country</label><input id="qc"></div></div><div id="qerr" style="color:var(--red);font-size:13px;margin-top:8px"></div><div style="margin-top:14px"><button class="btn f" data-a="send">Send my estimate on WhatsApp</button></div>';
+  return h+foot()}
+];
+function side(){
+  var c=calc(),p=c&&c.p,ts=C.trips.filter(function(t){return S.trips[t.id]}).map(function(t){return t.n}).join(', ');
+  var d=D.filter(function(x){return x.slug===S.doc})[0];
+  var rows=[['Operation',p?esc(p.n):'–'],['Add-ons',c?c.n||'–':'–'],['Complexity',S.step>2||S.rev?(S.rev?'Revision':'Primary'):'–'],['Suitability',bmi()||flagged()?(flagged()?'Needs review':'Looks suitable'):'–'],['Surgeon',S.doc==='help'?'We will match you':d?esc(d.name):'–'],['Room',C.rooms[S.room].n],['Occupancy',C.occ[S.occ].n],['Nights',c?c.nights+(S.extra?'':' (auto)'):'–'],['Translator',S.tr?esc(S.lang||'Yes'):'No'],['Explore',ts?esc(ts):'–']];
+  $('#side').innerHTML='<h4>Estimated price</h4><div class="price">'+(c?rng(c.tmn,c.tmx):'–')+'</div><small>Indicative range, updates as you choose</small><div style="margin-top:12px">'+rows.map(function(r){return '<div class="r"><span>'+r[0]+'</span><span>'+r[1]+'</span></div>'}).join('')+'</div><p style="font-size:12px;color:#bbb;margin:14px 0 0">Estimate only. Your exact, all-inclusive quote is confirmed after a free assessment.</p>';
+}
+function suit(){var el=$('#suit');if(!el)return;if(!bmi()&&!flagged()){el.innerHTML='';return}
+  el.innerHTML=flagged()?'<div class="note warn"><b>Needs a closer look.</b> Something here may affect your price, timing or safety. Your surgeon will review it with you before confirming anything.</div>':'<div class="note"><b>Looks suitable.</b> Nothing here should change your price, but your surgeon always confirms suitability before surgery.</div>'}
+function photos(){$$('.photo[data-p]').forEach(function(b){var u=b.getAttribute('data-p');if(!u)return;var im=new Image();im.onload=function(){b.textContent='';b.appendChild(im)};im.src=u})}
+function render(){$('#main').innerHTML=V[S.step]();side();suit();photos();window.scrollTo({top:0,behavior:'smooth'})}
+function rerender(){var y=window.scrollY;$('#main').innerHTML=V[S.step]();side();suit();photos();window.scrollTo(0,y)}
+document.addEventListener('click',function(e){
+  var t=e.target.closest('[data-a]');if(!t)return;var a=t.getAttribute('data-a'),v=t.getAttribute('data-v');
+  if(a==='next'){S.step++;render();return}if(a==='back'){S.step--;render();return}
+  if(a==='area'){S.area=v;S.proc=null;S.add={};S.ch={}}
+  else if(a==='proc'){S.proc=v;S.add={};S.ch={}}
+  else if(a==='add')S.add[v]=!S.add[v];
+  else if(a==='ch'){var g=t.getAttribute('data-g');S.ch[g]=S.ch[g]===v?null:v}
+  else if(a==='rev')S.rev=v==='1';
+  else if(a==='cond')S.cond[v]=!S.cond[v];
+  else if(a==='doc')S.doc=v;
+  else if(a==='room'){S.room=v;if(v!=='suite'&&S.occ==='triple')S.occ='single'}
+  else if(a==='occ')S.occ=v;
+  else if(a==='ex')S.extra=Math.max(0,Math.min(14,S.extra+(+v)));
+  else if(a==='tr')S.tr=v==='1';
+  else if(a==='trip')S.trips[v]=!S.trips[v];
+  else if(a==='send'){send();return}
+  rerender();
+});
+document.addEventListener('input',function(e){var i=e.target.id;
+  if(i==='h'||i==='w'){S[i]=e.target.value;$('#bmi').textContent=bmi()?bmi().toFixed(1):'–';suit();side()}
+  else if(i==='lang'){S.lang=e.target.value;side()}else if(i==='date')S.date=e.target.value;else if(i==='flex')S.flex=e.target.checked});
+function send(){
+  var n=$('#qn').value.trim(),p=$('#qp').value.trim();
+  if(!n||!p){$('#qerr').textContent='Please add your name and phone number.';return}
+  var c=calc(),pr=c.p,d=D.filter(function(x){return x.slug===S.doc})[0];
+  var m=['Price calculator request – TRUE ARTIS','Name: '+n,'Phone: '+p,'Email: '+$('#qe').value.trim(),'Country: '+$('#qc').value.trim(),'Operation: '+pr.n+(S.rev?' (revision)':''),
+   'Surgeon: '+(S.doc==='help'?'Help me choose':d?d.name:'Not chosen'),'Stay: '+C.rooms[S.room].n+', '+C.occ[S.occ].n+', '+c.nights+' nights','Translator: '+(S.tr?(S.lang||'yes'):'no'),
+   'Explore India: '+(C.trips.filter(function(t){return S.trips[t.id]}).map(function(t){return t.n}).join(', ')||'none'),'Date: '+(S.date||'not chosen')+(S.flex?' (flexible)':''),'Estimate: '+rng(c.tmn,c.tmx)].join('\n');
+  S.sent=true;window.open('https://wa.me/'+C.wa+'?text='+encodeURIComponent(m),'_blank');rerender();
+}
+if(C.sample)$('#sample').hidden=false;
+if(Q.get('from')==='map')document.documentElement.classList.add('zin');
+render();
+})();
+</script></body></html>
